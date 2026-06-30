@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML로 작성해서 n3r로 배포하기</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네이버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="0 챕터">
+          <p class="manual-chapter">AI 사용하기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Code 이해하기</a>
+          <a class="manual-link manual-link-child" href="./e1-nodejs-install.html">Node.js 설치하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">Confluence에 작성하기</a>
+          <a class="manual-link manual-link-child is-active" href="./1-2-html-n3r-deploy.html" aria-current="page">HTML로 n3r 배포하기</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 1-2</p>
+          <h1>HTML로 작성해서 n3r로 배포하기</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>목적</h2>
+            <p>
+              HTML로 작성해서 n3r로 배포하는 방식은 결과물을 웹 페이지처럼 보여주고 싶을 때 사용한다.
+              검색 필터, 표, 카드 목록, 안내 페이지처럼 화면 구성의 자유도가 필요한 자료에 적합하다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>전체 흐름 한눈에 보기</h2>
+            <p>
+              비개발자 관점에서는 HTML 파일, Node.js, Dockerfile, Git, n3r이 각각 다른 역할을 한다고
+              이해하면 된다. Claude Code는 화면 파일과 실행 준비 파일을 만들고, Git은 그 파일을 보관하며,
+              n3r은 Git에 올라간 파일을 서버로 실행한다.
+            </p>
+
+            <div class="mermaid-panel" aria-label="HTML 문서 작성부터 n3r 배포까지의 전체 흐름도">
+              <pre class="mermaid">
+flowchart BT
+  subgraph R["반복 작업"]
+    direction LR
+    A["HTML 작성"]
+    G["commit/push"]
+    J["배포"]
+    K["공유"]
+
+    A --> G --> J --> K --> A
+  end
+
+  subgraph O["1회 준비"]
+    direction LR
+    D["설정 파일 생성<br/>(server.js, Dockerfile)"]
+    E["Git 리포지토리 생성"]
+    F["remote 연결"]
+    I["n3r 서버 생성"]
+
+    E --> F
+  end
+
+  D --> G
+  F --> G
+  I --> J
+              </pre>
+            </div>
+
+            <div class="note-box">
+              처음 배포할 때는 server.js, Dockerfile, OSS(Git) 리포지토리, remote 연결, n3r 서버 생성이
+              필요하다. 이후 문서를 수정할 때는 HTML 작성 후 다시 commit/push와 배포 흐름을 반복하면 된다.
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>진행 순서</h2>
+            <ol>
+              <li>Claude Code에게 결과물을 HTML 파일로 작성하게 한다.</li>
+              <li>로컬에서 HTML 화면과 링크가 의도대로 동작하는지 확인한다.</li>
+              <li>최초 1회로 server.js와 Dockerfile을 준비한다.</li>
+              <li>OSS(Git) 리포지토리를 만들고, 작업 폴더와 remote를 연결한다.</li>
+              <li>작성된 HTML, CSS, server.js, Dockerfile 등 필요한 파일을 Git에 commit/push한다.</li>
+              <li>최초 1회로 n3r 서버를 생성한다.</li>
+              <li>n3r에서 해당 서버로 배포한다.</li>
+            </ol>
+            <div class="note-box">
+              n3r로 배포하려면 Git에 올라간 파일을 기준으로 서버가 만들어진다. 따라서 HTML 결과물을
+              로컬에만 두는 것이 아니라, 반드시 OSS(Git)에 commit/push하는 과정이 필요하다.
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>Dockerfile이 필요한 이유</h2>
+            <p>
+              n3r에서 배포하려면 서버가 어떤 방식으로 실행될지 알려주는 설정이 필요하다. 이때 사용하는
+              대표적인 파일이 <code>Dockerfile</code>이다. Dockerfile은 “이 프로젝트를 어떤 환경에서,
+              어떤 명령으로 실행할지”를 적어두는 배포 설명서라고 이해하면 된다.
+            </p>
+            <p>
+              단순 HTML 파일이라도 n3r에서는 서버 형태로 실행되어야 한다. 따라서 HTML 파일을 그대로
+              열어보는 방식이 아니라, Node.js 같은 실행 환경을 사용해 정적 파일을 제공하는 서버 형태로
+              실행시키는 구성이 필요하다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>프롬프트 예시</h2>
+            <pre class="code-block" aria-label="HTML 및 n3r 배포 준비 프롬프트 예시"><code>이 내용을 n3r에 배포할 수 있는 HTML 페이지로 작성해줘.
+기획자와 PM이 읽기 쉽게 구성하고, 검색이나 필터가 필요한 부분은 화면에서 사용할 수 있게 만들어줘.
+배포를 위해 Git에 커밋할 파일 목록을 정리하고, n3r에서 실행 가능한 Node.js 기반 정적 서버 구성과 Dockerfile도 함께 준비해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>장점</h2>
+            <ul>
+              <li>문서보다 더 자유로운 화면 구성과 인터랙션을 만들 수 있다.</li>
+              <li>검색, 필터, 카드형 목록 등 사용자가 직접 탐색하는 자료에 적합하다.</li>
+              <li>Git에 기록이 남아 변경 이력을 추적하기 좋다.</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>단점</h2>
+            <ul>
+              <li>Git commit/push, n3r 배포 같은 추가 과정이 필요하다.</li>
+              <li>Dockerfile과 Node.js 실행 방식처럼 최소한의 배포 구조를 이해해야 한다.</li>
+              <li>문서 내용만 빠르게 고치는 작업은 Confluence보다 번거로울 수 있다.</li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </div>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

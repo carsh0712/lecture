@@ -44,8 +44,11 @@ Current chapter structure:
 
 ```text
 0. AI 사용하기
+   - 개요
    - Claude Desktop과 Claude Code CLI 이해하기
-1. AI로 작성한 결과물 공유하기
+   - Node.js 설치하기
+   - Confluence에 작성하기
+   - HTML로 n3r 배포하기
 ```
 
 Rules:
@@ -61,7 +64,6 @@ Recommended directory names:
 
 ```text
 html/naver/using-ai/
-html/naver/share-ai-results/
 ```
 
 Example links from a chapter group:
@@ -69,11 +71,10 @@ Example links from a chapter group:
 ```html
 <p class="manual-chapter">AI 사용하기</p>
 <a href="./using-ai/0-overview.html">개요</a>
-<a href="./using-ai/1-claude-code-basics.html">Claude Desktop과 Claude Code CLI 이해하기</a>
+<a href="./using-ai/e2-claude-code-basics.html">Claude Desktop과 Claude Code CLI 이해하기</a>
 <a href="./using-ai/e1-nodejs-install.html">Node.js 설치하기</a>
-
-<p class="manual-chapter">AI로 작성한 결과물 공유하기</p>
-<a href="./share-ai-results/0-example-page.html">Example Page</a>
+<a href="./using-ai/1-1-confluence.html">Confluence에 작성하기</a>
+<a href="./using-ai/1-2-html-n3r-deploy.html">HTML로 n3r 배포하기</a>
 ```
 
 ## Naver Manual Audience

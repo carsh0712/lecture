@@ -309,6 +309,21 @@ a {
   line-height: 1.65;
 }
 
+.mermaid-panel {
+  margin-top: 22px;
+  overflow-x: auto;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.mermaid-panel .mermaid {
+  min-width: 720px;
+  margin: 0;
+  text-align: center;
+}
+
 .comparison-table-wrap {
   margin: 18px 0 22px;
   overflow-x: auto;

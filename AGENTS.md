@@ -14,12 +14,11 @@ html/
       css/
         styles.css
     <chapter-slug>/
-      <page-slug>/
-        index.html
-        assets/
-          images/
-          css/
-          js/
+      <section-number>-<page-slug>.html
+      assets/
+        images/
+        css/
+        js/
 ```
 
 Rules:
@@ -28,12 +27,14 @@ Rules:
 - For Naver manuals, use `html/naver/` as the root.
 - `html/naver/index.html` is the Naver manual landing page.
 - Links from `html/naver/index.html` should be organized by chapter.
-- Each chapter can contain multiple page subdirectories.
-- Each linked manual page should live in its own chapter/page subdirectory with an `index.html`.
-- Put page-specific assets inside that page's `assets/` directory when needed.
-- Use lowercase, hyphen-separated directory names such as `account-login/` or `search-console/`.
+- Each chapter can contain multiple page HTML files.
+- Each linked manual page should live directly under its chapter directory as `<section-number>-<page-slug>.html`.
+- Do not create an extra page directory just to hold `index.html`; `file-name.html` is enough.
+- Put chapter or page-specific assets inside that chapter's `assets/` directory when needed.
+- Use the section number, then a lowercase hyphen-separated file name, such as `0-overview.html`, `1-account-login.html`, or `2-search-console.html`.
+- The number at the front is the section order inside the chapter, not the chapter number.
 - Prefer relative links so the manual can be opened locally or served statically.
-- Link directly to `index.html` instead of only linking to a directory path. Local browsers may show a file listing when a directory path is opened.
+- Link directly to the `.html` file instead of only linking to a directory path. Local browsers may show a file listing when a directory path is opened.
 
 ## Naver Manual Menu
 
@@ -67,10 +68,11 @@ Example links from a chapter group:
 
 ```html
 <p class="manual-chapter">AI 사용하기</p>
-<a href="./using-ai/claude-code-basics/index.html">Claude Desktop과 Claude Code CLI 이해하기</a>
+<a href="./using-ai/0-overview.html">개요</a>
+<a href="./using-ai/1-claude-code-basics.html">Claude Desktop과 Claude Code CLI 이해하기</a>
 
 <p class="manual-chapter">AI로 작성한 결과물 공유하기</p>
-<a href="./share-ai-results/example-page/index.html">Example Page</a>
+<a href="./share-ai-results/0-example-page.html">Example Page</a>
 ```
 
 ## Naver Manual Audience
@@ -119,7 +121,7 @@ Recommended page skeleton:
     <div class="manual-layout">
       <nav class="manual-sidebar" aria-label="Manual navigation">
         <a href="./index.html">Naver Manual</a>
-        <a href="./account-login/index.html">Account Login</a>
+        <a href="./0-overview.html">Overview</a>
       </nav>
 
       <main class="manual-content">

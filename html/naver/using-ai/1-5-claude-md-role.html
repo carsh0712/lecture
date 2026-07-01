@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CLAUDE.md 파일의 역할 (수정예정)</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="0 챕터">
+          <p class="manual-chapter">문서 작성과 배포</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Code 이해하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">Confluence에 작성하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child is-active" href="./1-5-claude-md-role.html" aria-current="page">CLAUDE.md 파일의 역할 (수정예정)</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="1 챕터">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 1-5</p>
+          <h1>CLAUDE.md 파일의 역할 (수정예정)</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>CLAUDE.md란 무엇인가</h2>
+            <p>
+              <code>CLAUDE.md</code>는 Claude Code가 프로젝트를 이해할 때 먼저 참고하는 작업 안내서다.
+              쉽게 말해 “이 프로젝트에서 AI가 어떻게 일해야 하는지 적어두는 업무 가이드”라고 보면 된다.
+            </p>
+            <p>
+              매번 프롬프트에 같은 설명을 반복하지 않아도 되도록, 문서 작성 기준, 파일 구조, 배포 방식,
+              주의할 점을 <code>CLAUDE.md</code>에 정리해둘 수 있다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>무엇을 적어두면 좋은가</h2>
+            <ul>
+              <li>프로젝트의 목적과 주요 독자</li>
+              <li>문서 파일을 어디에 만들고 어떤 이름 규칙을 사용할지</li>
+              <li>HTML, Mermaid, 이미지, 링크를 작성할 때의 규칙</li>
+              <li>Git commit/push, 클라우드 서버 배포처럼 반복되는 작업 절차</li>
+              <li>민감정보를 다루지 않는다는 보안 주의사항</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>관리할 때의 원칙</h2>
+            <ol>
+              <li>실제 작업 방식이 바뀌면 <code>CLAUDE.md</code>도 함께 갱신한다.</li>
+              <li>너무 긴 설명보다 Claude Code가 바로 행동할 수 있는 규칙으로 쓴다.</li>
+              <li>예외적인 상황보다 자주 반복되는 업무 기준을 우선 적는다.</li>
+              <li>비개발자도 읽을 수 있도록 용어를 짧게 설명한다.</li>
+            </ol>
+          </section>
+
+          <section class="content-section">
+            <h2>CLAUDE.md 관리 프롬프트 예시</h2>
+            <pre class="code-block" aria-label="CLAUDE.md 관리 프롬프트 예시"><code>현재 프로젝트의 문서 구조와 최근 작업 방식을 확인해서 CLAUDE.md를 점검해줘.
+
+다음 기준으로 수정해줘.
+- 실제 파일 구조와 맞지 않는 지침은 최신 구조에 맞게 고쳐줘.
+- 새로 추가된 매뉴얼 작성 규칙, Mermaid 사용 방식, Git/클라우드 서버 배포 흐름을 반영해줘.
+- 비개발자도 이해할 수 있도록 어려운 개발 용어는 짧게 설명해줘.
+- 너무 구체적인 일회성 작업 내용은 빼고, 앞으로 반복해서 사용할 규칙만 남겨줘.
+- 민감정보, 계정 정보, 내부 문서를 임의로 노출하지 말라는 주의사항을 유지해줘.
+
+수정 전에는 어떤 항목을 바꿀지 먼저 요약하고, 수정 후에는 바뀐 내용을 간단히 정리해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>로컬 확인 후 commit/push 자동 처리</h2>
+            <p>
+              “HTML 문서가 변경되면 로컬에서 직접 확인하고, 문제가 없으면 commit/push까지 해줘” 같은
+              지시는 반복 작업 규칙으로 관리할 수 있다. 이 규칙은 프로젝트마다 확인 방식과 배포 기준이
+              다를 수 있으므로 <code>CLAUDE.md</code>에 적어두는 것이 우선 적합하다.
+            </p>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>CLAUDE.md에 두기</th>
+                    <th>스킬로 만들기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>적합한 경우</th>
+                    <td>이 프로젝트에서만 쓰는 확인, commit/push, 배포 규칙일 때</td>
+                    <td>여러 프로젝트에서 같은 절차를 반복해서 쓰고 싶을 때</td>
+                  </tr>
+                  <tr>
+                    <th>장점</th>
+                    <td>프로젝트 구조와 파일 경로에 맞게 바로 적용하기 쉽다.</td>
+                    <td>한 번 만들어두면 다른 저장소에서도 같은 방식으로 재사용할 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <th>단점</th>
+                    <td>다른 프로젝트에는 자동으로 적용되지 않는다.</td>
+                    <td>만들고 관리하는 비용이 더 크고, 프로젝트별 예외를 따로 처리해야 한다.</td>
+                  </tr>
+                  <tr>
+                    <th>추천</th>
+                    <td>먼저 선택한다. 매뉴얼 프로젝트의 기본 작업 규칙으로 충분하다.</td>
+                    <td>같은 배포 절차가 여러 프로젝트에서 반복될 때 만든다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pre class="code-block" aria-label="HTML 변경 후 확인 및 Git 처리 규칙 예시"><code>HTML 문서가 변경되면 다음 순서로 처리해줘.
+
+1. 변경된 HTML 파일과 관련 링크를 확인한다.
+2. 로컬에서 직접 열어 화면, Mermaid, 내부 링크가 정상인지 확인한다.
+3. 문제가 있으면 수정하고 다시 확인한다.
+4. 문제가 없으면 변경 파일만 Git에 stage한다.
+5. 작업 내용을 설명하는 commit 메시지로 commit한다.
+6. 사용자가 push까지 요청한 경우 remote 브랜치로 push한다.
+
+민감정보, 불필요한 .DS_Store, 작업과 무관한 파일은 commit하지 않는다.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>주의할 점</h2>
+            <ul>
+              <li><code>CLAUDE.md</code>에는 비밀번호, 토큰, 개인 계정 정보를 적지 않는다.</li>
+              <li>실제와 다른 오래된 규칙이 남아 있으면 Claude Code가 잘못된 구조로 작업할 수 있다.</li>
+              <li>큰 규칙을 바꿀 때는 관련 메뉴, 파일명, 링크도 함께 확인한다.</li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

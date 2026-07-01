@@ -116,6 +116,14 @@ a {
   line-height: 1.25;
 }
 
+.page-greeting {
+  max-width: 760px;
+  margin: 14px 0 0;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
 .empty-state {
   min-height: 360px;
   border: 1px solid var(--border);

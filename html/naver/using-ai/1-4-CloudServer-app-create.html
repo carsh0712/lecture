@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>클라우드 서버 앱 생성 (수정예정)</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="0 챕터">
+          <p class="manual-chapter">문서 작성과 배포</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Code 이해하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">Confluence에 작성하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child is-active" href="./1-4-CloudServer-app-create.html" aria-current="page">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="1 챕터">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 1-4</p>
+          <h1>클라우드 서버 앱 생성 (수정예정)</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>목적</h2>
+            <p>
+              클라우드 서버 앱은 Git에 올라간 HTML 결과물을 서버에서 실행하고 공유 URL로 제공하기 위한 배포 단위다.
+              쉽게 말해 “Git에 올린 결과물을 웹에서 볼 수 있게 연결하는 서비스”라고 이해하면 된다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>생성 전 준비물</h2>
+            <ul>
+              <li>HTML 결과물이 들어 있는 OSS(Git) 리포지토리</li>
+              <li>HTML을 서버로 제공하기 위한 server.js</li>
+              <li>클라우드 서버가 실행 방법을 알 수 있게 하는 Dockerfile</li>
+              <li>배포할 브랜치와 경로에 대한 확인</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>진행 순서</h2>
+            <ol>
+              <li>클라우드 서버에서 새 앱 또는 서비스를 생성한다.</li>
+              <li>OSS(Git) 리포지토리를 연결한다.</li>
+              <li>배포할 브랜치와 Dockerfile 위치를 확인한다.</li>
+              <li>환경 설정을 확인한 뒤 배포를 실행한다.</li>
+              <li>생성된 URL로 접속해 HTML 화면이 정상적으로 보이는지 확인한다.</li>
+            </ol>
+          </section>
+
+          <section class="content-section">
+            <h2>확인할 점</h2>
+            <ul>
+              <li>클라우드 서버가 연결한 Git 리포지토리가 맞는지 확인한다.</li>
+              <li>최신 변경 내용이 push되어 있는지 확인한다.</li>
+              <li>배포 후 화면, 링크, 검색 필터 같은 주요 기능을 직접 확인한다.</li>
+            </ul>
+            <div class="note-box">
+              클라우드 서버 앱 생성은 보통 최초 1회 작업이다. 이후 HTML 문서를 수정할 때는 Git에 commit/push하고
+              다시 배포하는 흐름을 반복하면 된다.
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

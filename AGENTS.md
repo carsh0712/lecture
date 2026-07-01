@@ -43,12 +43,18 @@ The Naver manual sidebar is organized by chapters.
 Current chapter structure:
 
 ```text
-0. AI 사용하기
+0. 문서 작성과 배포
    - 개요
    - Claude Desktop과 Claude Code CLI 이해하기
-   - Node.js 설치하기
-   - Confluence에 작성하기
-   - HTML로 n3r 배포하기
+   - Confluence에 작성하기 (수정예정)
+   - HTML로 클라우드 서버 배포하기
+   - 클라우드 서버 앱 생성 (수정예정)
+   - CLAUDE.md 파일의 역할 (수정예정)
+1. 설치 가이드
+   - Node.js 설치하기 (수정예정)
+   - Git 설치 가이드 (수정예정)
+   - GQuery MCP 서버 설치 (수정예정)
+   - Atlassian MCP 서버 설치 (수정예정)
 ```
 
 Rules:
@@ -64,22 +70,30 @@ Recommended directory names:
 
 ```text
 html/naver/using-ai/
+html/naver/install-guide/
 ```
 
 Example links from a chapter group:
 
 ```html
-<p class="manual-chapter">AI 사용하기</p>
+<p class="manual-chapter">문서 작성과 배포</p>
 <a href="./using-ai/0-overview.html">개요</a>
 <a href="./using-ai/e2-claude-code-basics.html">Claude Desktop과 Claude Code CLI 이해하기</a>
-<a href="./using-ai/e1-nodejs-install.html">Node.js 설치하기</a>
-<a href="./using-ai/1-1-confluence.html">Confluence에 작성하기</a>
-<a href="./using-ai/1-2-html-n3r-deploy.html">HTML로 n3r 배포하기</a>
+<a href="./using-ai/1-1-confluence.html">Confluence에 작성하기 (수정예정)</a>
+<a href="./using-ai/1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+<a href="./using-ai/1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+<a href="./using-ai/1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+
+<p class="manual-chapter">설치 가이드</p>
+<a href="./install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+<a href="./install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+<a href="./install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+<a href="./install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
 ```
 
 ## Naver Manual Audience
 
-The Naver manual is educational material for planners, product managers, and other non-developer stakeholders who may not be familiar with implementation details.
+The Naver manual is educational material for non-developers who may not be familiar with implementation details.
 
 Writing rules for this audience:
 
@@ -87,7 +101,7 @@ Writing rules for this audience:
 - Avoid assuming prior development knowledge.
 - When a technical term is necessary, add a short practical explanation.
 - Prefer workflow, purpose, decision context, and expected result over implementation details.
-- Include enough background for a planner or PM to understand why a step matters.
+- Include enough background for non-developers to understand why a step matters.
 - Keep examples close to real planning, content review, product operation, or collaboration scenarios.
 
 ## HTML Layout
@@ -141,7 +155,7 @@ Recommended page skeleton:
 ## Writing Guidelines
 
 - Write manual content in Korean unless a term is normally used in English.
-- Write for planners and PMs who may not know development concepts well.
+- Write for non-developers who may not know development concepts well.
 - Organize instructions as numbered steps.
 - Put warnings, prerequisites, and important notes near the related step.
 - Keep each page focused on one task or topic.

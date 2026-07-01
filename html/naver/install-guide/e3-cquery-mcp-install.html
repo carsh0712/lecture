@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GQuery MCP 서버 설치 (수정예정)</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="0 챕터">
+          <p class="manual-chapter">문서 작성과 배포</p>
+          <a class="manual-link manual-link-child" href="../using-ai/0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="../using-ai/e2-claude-code-basics.html">Claude Code 이해하기</a>
+          <a class="manual-link manual-link-child" href="../using-ai/1-1-confluence.html">Confluence에 작성하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../using-ai/1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child" href="../using-ai/1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../using-ai/1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="1 챕터">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="./e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child is-active" href="./e3-cquery-mcp-install.html" aria-current="page">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Expanded 3</p>
+          <h1>GQuery MCP 서버 설치 (수정예정)</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>목적</h2>
+            <p>
+              GQuery MCP 서버는 Claude Code가 GQuery에 있는 정보를 작업에 활용할 수 있게 연결하는 통로다.
+              비개발자 입장에서는 Claude Code가 필요한 내부 데이터를 직접 참고할 수 있게 해주는 준비
+              단계라고 이해하면 된다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>설치 전 확인할 것</h2>
+            <ul>
+              <li>GQuery 접근 권한이 있는지 확인한다.</li>
+              <li>Node.js와 npm 또는 npx를 사용할 수 있는지 확인한다.</li>
+              <li>인증 토큰이나 계정 정보가 필요한 경우 안전한 저장 위치를 확인한다.</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>진행 순서</h2>
+            <ol>
+              <li>GQuery MCP 서버 설치 방법과 필요한 환경 변수를 확인한다.</li>
+              <li>Claude Code 설정에 GQuery MCP 서버를 추가한다.</li>
+              <li>연결 테스트를 실행해 Claude Code가 GQuery 정보를 읽을 수 있는지 확인한다.</li>
+              <li>테스트 프롬프트로 필요한 정보를 가져오는지 검토한다.</li>
+            </ol>
+          </section>
+
+          <section class="content-section">
+            <h2>테스트 프롬프트 예시</h2>
+            <pre class="code-block" aria-label="GQuery MCP 연결 테스트 프롬프트 예시"><code>GQuery MCP 서버 연결 상태를 확인해줘.
+접근 가능한 데이터 범위를 요약하고, 매뉴얼 작성에 참고할 수 있는 정보가 있는지 알려줘.
+민감정보는 출력하지 말고, 어떤 종류의 정보에 접근 가능한지만 설명해줘.</code></pre>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

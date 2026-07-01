@@ -2,12 +2,12 @@
 
 ## Project Structure
 
-This repository keeps HTML manuals under the `html/` directory.
+This repository keeps HTML manuals under the `docs/` directory.
 
 Use this structure for Naver-related manuals:
 
 ```text
-html/
+docs/
   naver/
     index.html
     assets/
@@ -23,10 +23,10 @@ html/
 
 Rules:
 
-- Create one top-level directory per service under `html/`.
-- For Naver manuals, use `html/naver/` as the root.
-- `html/naver/index.html` is the Naver manual landing page.
-- Links from `html/naver/index.html` should be organized by chapter.
+- Create one top-level directory per service under `docs/`.
+- For Naver manuals, use `docs/naver/` as the root.
+- `docs/naver/index.html` is the Naver manual landing page.
+- Links from `docs/naver/index.html` should be organized by chapter.
 - Each chapter can contain multiple page HTML files.
 - Each linked manual page should live directly under its chapter directory as `<section-id>-<page-slug>.html`.
 - Do not create an extra page directory just to hold `index.html`; `file-name.html` is enough.
@@ -69,8 +69,8 @@ Rules:
 Recommended directory names:
 
 ```text
-html/naver/using-ai/
-html/naver/install-guide/
+docs/naver/using-ai/
+docs/naver/install-guide/
 ```
 
 Example links from a chapter group:

@@ -4,11 +4,11 @@
 
 This repository keeps HTML manuals under the `docs/` directory.
 
-Use this structure for Naver-related manuals:
+Use this structure for Four Leaf Clover-related manuals:
 
 ```text
 docs/
-  naver/
+  four-leaf-clover/
     index.html
     assets/
       css/
@@ -24,9 +24,9 @@ docs/
 Rules:
 
 - Create one top-level directory per service under `docs/`.
-- For Naver manuals, use `docs/naver/` as the root.
-- `docs/naver/index.html` is the Naver manual landing page.
-- Links from `docs/naver/index.html` should be organized by chapter.
+- For Four Leaf Clover manuals, use `docs/four-leaf-clover/` as the root.
+- `docs/four-leaf-clover/index.html` is the Four Leaf Clover manual landing page.
+- Links from `docs/four-leaf-clover/index.html` should be organized by chapter.
 - Each chapter can contain multiple page HTML files.
 - Each linked manual page should live directly under its chapter directory as `<section-id>-<page-slug>.html`.
 - Do not create an extra page directory just to hold `index.html`; `file-name.html` is enough.
@@ -36,9 +36,9 @@ Rules:
 - Prefer relative links so the manual can be opened locally or served statically.
 - Link directly to the `.html` file instead of only linking to a directory path. Local browsers may show a file listing when a directory path is opened.
 
-## Naver Manual Menu
+## Four Leaf Clover Manual Menu
 
-The Naver manual sidebar is organized by chapters.
+The Four Leaf Clover manual sidebar is organized by chapters.
 
 Current chapter structure:
 
@@ -69,8 +69,8 @@ Rules:
 Recommended directory names:
 
 ```text
-docs/naver/using-ai/
-docs/naver/install-guide/
+docs/four-leaf-clover/using-ai/
+docs/four-leaf-clover/install-guide/
 ```
 
 Example links from a chapter group:
@@ -91,9 +91,9 @@ Example links from a chapter group:
 <a href="./install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
 ```
 
-## Naver Manual Audience
+## Four Leaf Clover Manual Audience
 
-The Naver manual is educational material for non-developers who may not be familiar with implementation details.
+The Four Leaf Clover manual is educational material for non-developers who may not be familiar with implementation details.
 
 Writing rules for this audience:
 
@@ -130,13 +130,13 @@ Recommended page skeleton:
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Naver Manual</title>
+    <title>Four Leaf Clover Manual</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
   </head>
   <body>
     <div class="manual-layout">
       <nav class="manual-sidebar" aria-label="Manual navigation">
-        <a href="./index.html">Naver Manual</a>
+        <a href="./index.html">Four Leaf Clover Manual</a>
         <a href="./0-overview.html">Overview</a>
       </nav>
 

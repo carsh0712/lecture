@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3 단계. 프로그램 만들기</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI로 개발하기">
+          <p class="manual-chapter">AI로 개발하기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="./1-example-site-policy.html">1단계 - 프로젝트의 목표 정하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">2-1 단계. 컨플런스에 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-2-html-document.html">2-2 단계. HTML 문서로 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-3-program-development.html">2-3 단계. 프로그램으로 개발하기</a>
+          <a class="manual-link manual-link-child is-active" href="./3-program-flow.html" aria-current="page">3 단계. 프로그램 만들기</a>
+          <a class="manual-link manual-link-child" href="./3-1-development-prep.html">3-1 단계. 개발 준비하기</a>
+          <a class="manual-link manual-link-child" href="./3-2-screen-draft.html">3-2 단계. 화면 초안과 기능 구현하기</a>
+          <a class="manual-link manual-link-child" href="./3-3-local-check.html">3-3 단계. 로컬에서 확인하고 수정하기</a>
+          <a class="manual-link manual-link-child" href="./3-4-git-save.html">3-4 단계. OSS(Git)에 저장하기</a>
+          <a class="manual-link manual-link-child" href="./3-5-cloud-deploy.html">3-5 단계. 클라우드 서버에 배포하기</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="설치 가이드">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Desktop과 CLI 이해하기</a>
+          <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 3</p>
+          <h1>3 단계. 프로그램 만들기</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>이 단계에서 이해할 것</h2>
+            <p>
+              프로그램으로 만들기로 결정했다면, 바로 코드를 작성하는 것이 아니라 먼저 흐름을 정리해야 한다.
+              비개발자는 모든 개발 내용을 알 필요는 없지만, 어떤 순서로 결과물이 만들어지는지는 이해하고
+              있어야 AI Agent와 더 쉽게 협업할 수 있다.
+            </p>
+            <p>
+              아래 흐름도는 우리가 관리하는 사이트의 운영 데이터를 가져와 화면에서 확인하고, 필요한 경우
+              상태를 저장하는 프로그램을 만든다고 가정한 예시다.
+            </p>
+
+            <div class="mermaid-panel" aria-label="프로그램 만들기 전체 흐름도">
+              <pre class="mermaid">
+flowchart TD
+  A["만들 프로그램의 목적 정리"]
+  C["필요한 데이터 확인"]
+  D["어떤 개발 플랫폼을 사용할지 결정"]
+  F["AI Agent가 프로그램 파일 작성"]
+  G["로컬에서 확인"]
+  H{"수정이 필요한가?"}
+  I["AI Agent에게 수정 요청"]
+  J["OSS(Git)에 저장"]
+  K["클라우드 서버에 배포"]
+  L["운영자가 사용"]
+  M["피드백 반영"]
+
+  A --> C --> D --> F --> G --> H
+  H -->|"예"| I --> G
+  H -->|"아니오"| J --> K --> L --> M --> I
+              </pre>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>흐름도에서 확인할 것</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>단계</th>
+                    <th>확인할 내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>만들 프로그램의 목적 정리</td>
+                    <td>무엇을 줄이고 싶은지, 어떤 업무를 편하게 만들고 싶은지 정리한다.</td>
+                  </tr>
+                  <tr>
+                    <td>필요한 데이터 확인</td>
+                    <td>화면에 보여줄 항목과 저장해야 할 값을 구분한다.</td>
+                  </tr>
+                  <tr>
+                    <td>어떤 개발 플랫폼을 사용할지 결정</td>
+                    <td>웹앱, 서버 프로그램, 내부 도구처럼 어떤 방식으로 만들지 정한다.</td>
+                  </tr>
+                  <tr>
+                    <td>AI Agent가 프로그램 파일 작성</td>
+                    <td>AI Agent가 화면, 서버, 설정 파일을 만든다.</td>
+                  </tr>
+                  <tr>
+                    <td>로컬에서 확인</td>
+                    <td>배포 전 내 컴퓨터에서 화면, 버튼, 데이터 표시가 맞는지 확인한다.</td>
+                  </tr>
+                  <tr>
+                    <td>OSS(Git)에 저장</td>
+                    <td>확인된 파일을 저장소에 올려 변경 이력을 남긴다.</td>
+                  </tr>
+                  <tr>
+                    <td>클라우드 서버에 배포</td>
+                    <td>팀이 접속할 수 있도록 서버에 올린다.</td>
+                  </tr>
+                  <tr>
+                    <td>운영자가 사용</td>
+                    <td>실제 업무에서 최신 데이터를 확인하고 처리한다.</td>
+                  </tr>
+                  <tr>
+                    <td>피드백 반영</td>
+                    <td>사용 중 발견한 불편함을 다시 수정한다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 이렇게 말하면 좋다</h2>
+            <pre class="code-block" aria-label="프로그램 흐름 정리 프롬프트 예시"><code>우리가 관리하는 사이트의 운영 데이터를 확인하는 프로그램을 만들려고 해.
+비개발자도 이해할 수 있게 개발 순서를 먼저 정리해줘.
+
+운영자는 매일 문의 목록을 보고, 상태별로 필터링하고, 처리 상태를 변경해야 해.
+데이터는 운영 중인 웹사이트에서 최신 상태로 가져와야 해.
+
+먼저 어떤 개발 플랫폼으로 만드는 것이 적합한지 비교하고,
+필요한 화면, 데이터 흐름, 저장이 필요한 항목, 테스트 순서, 배포 전 확인 사항을 정리해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>중요한 기준</h2>
+            <p>
+              프로그램 개발은 한 번에 완성하는 작업이 아니다. 화면을 만들고, 확인하고, 수정하고, 다시 확인하는
+              과정이 반복된다. 비개발자는 이 반복 과정에서 업무 기준이 맞는지 확인하는 역할을 맡는다.
+            </p>
+            <div class="note-box">
+              핵심은 "AI가 코드를 만든다"가 아니라 "사람이 업무 기준을 설명하고, AI가 실행 가능한 형태로
+              바꾼다"는 점이다.
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

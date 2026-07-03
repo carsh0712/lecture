@@ -12,18 +12,27 @@
         <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
         <a class="manual-link" href="../index.html">대시보드</a>
 
-        <div class="manual-menu-group" aria-label="0 챕터">
-          <p class="manual-chapter">문서 작성과 배포</p>
+        <div class="manual-menu-group" aria-label="AI로 개발하기">
+          <p class="manual-chapter">AI로 개발하기</p>
           <a class="manual-link manual-link-child is-active" href="./0-overview.html" aria-current="page">개요</a>
-          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Code 이해하기</a>
-          <a class="manual-link manual-link-child" href="./1-1-confluence.html">Confluence에 작성하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-example-site-policy.html">1단계 - 프로젝트의 목표 정하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">2-1 단계. 컨플런스에 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-2-html-document.html">2-2 단계. HTML 문서로 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-3-program-development.html">2-3 단계. 프로그램으로 개발하기</a>
+          <a class="manual-link manual-link-child" href="./3-program-flow.html">3 단계. 프로그램 만들기</a>
+          <a class="manual-link manual-link-child" href="./3-1-development-prep.html">3-1 단계. 개발 준비하기</a>
+          <a class="manual-link manual-link-child" href="./3-2-screen-draft.html">3-2 단계. 화면 초안과 기능 구현하기</a>
+          <a class="manual-link manual-link-child" href="./3-3-local-check.html">3-3 단계. 로컬에서 확인하고 수정하기</a>
+          <a class="manual-link manual-link-child" href="./3-4-git-save.html">3-4 단계. OSS(Git)에 저장하기</a>
+          <a class="manual-link manual-link-child" href="./3-5-cloud-deploy.html">3-5 단계. 클라우드 서버에 배포하기</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="설치 가이드">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Desktop과 CLI 이해하기</a>
           <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
           <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
           <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
-        </div>
-
-        <div class="manual-menu-group" aria-label="1 챕터">
-          <p class="manual-chapter">설치 가이드</p>
           <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
           <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
           <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
@@ -39,68 +48,48 @@
 
         <article class="content-panel">
           <section class="content-section">
-            <h2>AI를 활용한 결과물 작성 흐름</h2>
+            <h2>이 매뉴얼의 목적</h2>
             <p>
-              문서 작성과 배포 챕터에서는 프롬프트를 작성한 뒤 Claude Code가 내부 지식 저장소에서 필요한
-              정보를 가져오고, 그 정보를 목적에 맞게 정리하여 공유 가능한 결과물로 만드는 과정을 다룬다.
+              이 매뉴얼은 비개발자가 AI Agent와 함께 업무에 필요한 문서나 작은 프로그램을 만들고,
+              Confluence, HTML, 클라우드 서버 등 알맞은 방식으로 공유하거나 사용할 수 있도록 돕는다.
             </p>
             <p>
-              아래 흐름도는 비개발자가 전체 작업 순서를 한눈에 이해할 수 있도록 정리한 것이다.
+              아래 흐름도는 업무 아이디어가 문서나 프로그램으로 만들어지고, 어디에 저장하고 공유되는지
+              간단히 보여준다.
             </p>
 
-            <div class="mermaid-panel" aria-label="AI 결과물 작성 및 배포 흐름도">
+            <div class="mermaid-panel" aria-label="문서 작성과 자동화 프로그램 개발 판단 흐름도">
               <pre class="mermaid">
 flowchart TD
-  A["Prompt 작성"]
-  B["Claude Code가 MCP 서버로<br/>Confluence 또는 GQuery에 연결해서 정보 가져오기"]
-  C["Claude Code가 정보 가공"]
-  D{"배포 방식 선택"}
-  E["Confluence에 작성하기"]
-  F["HTML로 작성"]
-  G["OSS(git)에 푸시"]
-  H["클라우드 서버 연결 및 배포"]
+  A["업무에서 필요한 일을 정한다"]
+  B{"문서로 남길 일인가?<br/>프로그램으로 개발할 일인가?"}
 
-  A --> B --> C --> D
-  D -->|"방식 1"| E
-  D -->|"방식 2"| F --> G --> H
+  C{"문서라면<br/>어떤 문서로 작성할까?"}
+  D["Confluence<br/>팀이 함께 보고 수정하는 문서"]
+  E["HTML 문서<br/>웹 페이지처럼 보는 안내 자료"]
+
+  F["OSS(Git) 저장소<br/>HTML 파일 보관"]
+  G["Page(OSS/Git)<br/>링크로 공유"]
+
+  H["자동화 프로그램<br/>입력, 조회, 처리 기능 만들기"]
+  I["OSS(Git) 저장소<br/>프로그램 파일 보관"]
+  J["클라우드 서버<br/>프로그램을 실행할 곳"]
+
+  K["AI Agent와 함께<br/>작성하고 수정"]
+  L["팀에 공유하거나<br/>실제 업무에 사용"]
+
+  A --> B
+  B -->|"문서 작성"| C
+  B -->|"자동화 프로그램"| H
+  C -->|"Confluence에 올림"| D
+  C -->|"HTML 문서로 작성"| E
+  E --> F --> G
+  H --> I --> J
+  D --> K
+  G --> K
+  J --> K
+  K --> L
               </pre>
-            </div>
-          </section>
-
-          <section class="content-section">
-            <h2>용어 정리</h2>
-            <dl class="definition-list">
-              <div class="definition-item">
-                <dt>MCP 서버</dt>
-                <dd>
-                  Claude code가 외부 도구와 연결될 때 사용하는 연결 서버다. 쉽게 말해 Confluence,
-                  Jira, GQuery 같은 도구에 접근하기 위한 통로라고 보면 된다.
-                </dd>
-              </div>
-            </dl>
-          </section>
-
-          <section class="content-section">
-            <h2>배포 방식</h2>
-            <dl class="definition-list">
-              <div class="definition-item">
-                <dt>Confluence에 작성하기</dt>
-                <dd>
-                  wiki 문서로 바로 공유하고 리뷰하기 좋은 방식이다.
-                </dd>
-              </div>
-              <div class="definition-item">
-                <dt>HTML로 작성 후 배포하기</dt>
-                <dd>
-                  Claude Code가 작성한 HTML 파일을 클라우드 서버를 통해 웹 페이지 형태로
-                  공유하는 방식이다. Confluence에 작성하는 것보다 자유도가 높고, 여러가지 효과(검색 필터 등)를 넣을 수 있는 장점이
-                  있다.
-                </dd>
-              </div>
-            </dl>
-            <div class="note-box">
-              클라우드 서버로 배포하려면 HTML 결과물을 먼저 OSS(Git)에 푸시하는 과정이 필요하다. 클라우드 서버는 OSS(Git)에 올라간
-              파일을 기준으로 서버를 연결하고 배포한다고 이해하면 된다.
             </div>
           </section>
         </article>

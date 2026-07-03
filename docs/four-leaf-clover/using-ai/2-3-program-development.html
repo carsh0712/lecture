@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2-3 단계. 프로그램으로 개발하기</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI로 개발하기">
+          <p class="manual-chapter">AI로 개발하기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child" href="./1-example-site-policy.html">1단계 - 프로젝트의 목표 정하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">2-1 단계. 컨플런스에 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-2-html-document.html">2-2 단계. HTML 문서로 작성하기</a>
+          <a class="manual-link manual-link-child is-active" href="./2-3-program-development.html" aria-current="page">2-3 단계. 프로그램으로 개발하기</a>
+          <a class="manual-link manual-link-child" href="./3-program-flow.html">3 단계. 프로그램 만들기</a>
+          <a class="manual-link manual-link-child" href="./3-1-development-prep.html">3-1 단계. 개발 준비하기</a>
+          <a class="manual-link manual-link-child" href="./3-2-screen-draft.html">3-2 단계. 화면 초안과 기능 구현하기</a>
+          <a class="manual-link manual-link-child" href="./3-3-local-check.html">3-3 단계. 로컬에서 확인하고 수정하기</a>
+          <a class="manual-link manual-link-child" href="./3-4-git-save.html">3-4 단계. OSS(Git)에 저장하기</a>
+          <a class="manual-link manual-link-child" href="./3-5-cloud-deploy.html">3-5 단계. 클라우드 서버에 배포하기</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="설치 가이드">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Desktop과 CLI 이해하기</a>
+          <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 2-3</p>
+          <h1>2-3 단계. 프로그램으로 개발하기</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>언제 프로그램으로 개발할까?</h2>
+            <p>
+              프로그램은 문서를 보여주는 것을 넘어, 계속 바뀌는 데이터를 반영해야 할 때 선택한다. 예를 들어
+              우리가 관리하는 사이트의 문의 건수, 처리 상태, 담당자, 예외 목록이 매일 바뀌거나, 날짜별로
+              새 데이터가 계속 갱신된다면 HTML 문서만으로는 최신 상태를 유지하기 어렵다.
+            </p>
+            <p>
+              또한 운영 중인 웹사이트에 접속해서 최신 데이터를 실시간으로 가져와 보여줘야 한다면 프로그램이
+              필요하다. 예를 들어 오늘 접수된 문의, 현재 처리 중인 항목, 방금 변경된 상태를 화면에 바로
+              보여줘야 하는 경우가 여기에 해당한다.
+            </p>
+            <p>
+              운영자가 화면에서 데이터를 조회하고, 값을 입력하고, 처리 상태를 바꾸고, 그 결과를 저장해야 한다면
+              자동화 프로그램으로 개발하는 것이 맞다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>문서와 프로그램의 차이</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>HTML 문서</th>
+                    <th>자동화 프로그램</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>데이터</th>
+                    <td>작성 시점의 내용을 보기 좋게 보여준다.</td>
+                    <td>날짜별로 새로 갱신되거나 웹사이트에서 실시간으로 가져온 데이터를 보여준다.</td>
+                  </tr>
+                  <tr>
+                    <th>사용자 행동</th>
+                    <td>읽고 검색하고 필터로 찾아본다.</td>
+                    <td>입력, 수정, 저장, 승인 같은 업무 처리를 한다.</td>
+                  </tr>
+                  <tr>
+                    <th>예시</th>
+                    <td>운영 방침 안내 페이지, 처리 기준 목록, FAQ</td>
+                    <td>문의 처리 현황판, 담당자 배정 도구, 예외 처리 관리 화면</td>
+                  </tr>
+                  <tr>
+                    <th>운영 방식</th>
+                    <td>파일을 수정하고 다시 공유한다.</td>
+                    <td>서버에서 실행하며 데이터 변경을 계속 반영한다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 요청하기</h2>
+            <p>
+              프로그램 개발을 요청할 때는 화면 모양보다 먼저 "어떤 데이터가 바뀌는지"와 "운영자가 어떤 일을
+              해야 하는지"를 알려주는 것이 중요하다.
+            </p>
+            <pre class="code-block" aria-label="프로그램 개발 프롬프트 예시"><code>우리가 관리하는 사이트 운영을 위한 자동화 프로그램을 만들고 싶어.
+운영 담당자가 매일 바뀌는 문의 처리 상태를 확인하고 관리하는 용도야.
+운영 중인 웹사이트에서 최신 문의 데이터를 가져와 화면에 보여줘야 해.
+
+필요한 기능:
+- 문의 목록 조회
+- 상태별 필터
+- 담당자 확인
+- 처리 상태 변경
+- 예외 상황 메모 저장
+
+비개발자가 사용할 화면이므로 어렵지 않은 용어로 구성해줘.
+먼저 화면 구성, 필요한 데이터 항목, 저장 방식, 클라우드 서버 배포에 필요한 파일을 제안해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>OSS(Git)와 클라우드 서버가 필요한 이유</h2>
+            <p>
+              프로그램은 HTML 문서보다 파일과 설정이 많다. 화면 파일, 서버 코드, 데이터 저장 방식, 실행 설정을
+              함께 관리해야 하므로 OSS(Git) 저장소에 보관한다. 그리고 사용자가 웹에서 접속해 실제로 사용하려면
+              클라우드 서버에 올려 실행해야 한다.
+            </p>
+            <ul>
+              <li>OSS(Git)는 프로그램 파일과 수정 이력을 보관한다.</li>
+              <li>클라우드 서버는 프로그램을 계속 실행하고 접속 주소를 제공한다.</li>
+              <li>데이터가 바뀌는 업무는 서버에서 처리해야 여러 사람이 같은 최신 상태를 볼 수 있다.</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>프로그램으로 만들기 전에 확인할 점</h2>
+            <ul>
+              <li>정말 최신 데이터 반영이 필요한가?</li>
+              <li>보여줘야 하는 데이터가 날짜별로 새로 갱신되는가?</li>
+              <li>운영 중인 웹사이트에 접속해서 데이터를 실시간으로 가져와야 하는가?</li>
+              <li>운영자가 화면에서 값을 입력하거나 저장해야 하는가?</li>
+              <li>누가 어떤 데이터를 볼 수 있는지 권한 구분이 필요한가?</li>
+              <li>개인정보나 민감한 운영 정보가 포함되는가?</li>
+              <li>문서나 HTML로 충분한 내용을 너무 크게 만들고 있지는 않은가?</li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

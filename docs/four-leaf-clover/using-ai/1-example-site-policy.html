@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>1단계 - 프로젝트의 목표 정하기</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
+        <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
+        <a class="manual-link" href="../index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI로 개발하기">
+          <p class="manual-chapter">AI로 개발하기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
+          <a class="manual-link manual-link-child is-active" href="./1-example-site-policy.html" aria-current="page">1단계 - 프로젝트의 목표 정하기</a>
+          <a class="manual-link manual-link-child" href="./1-1-confluence.html">2-1 단계. 컨플런스에 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-2-html-document.html">2-2 단계. HTML 문서로 작성하기</a>
+          <a class="manual-link manual-link-child" href="./2-3-program-development.html">2-3 단계. 프로그램으로 개발하기</a>
+          <a class="manual-link manual-link-child" href="./3-program-flow.html">3 단계. 프로그램 만들기</a>
+          <a class="manual-link manual-link-child" href="./3-1-development-prep.html">3-1 단계. 개발 준비하기</a>
+          <a class="manual-link manual-link-child" href="./3-2-screen-draft.html">3-2 단계. 화면 초안과 기능 구현하기</a>
+          <a class="manual-link manual-link-child" href="./3-3-local-check.html">3-3 단계. 로컬에서 확인하고 수정하기</a>
+          <a class="manual-link manual-link-child" href="./3-4-git-save.html">3-4 단계. OSS(Git)에 저장하기</a>
+          <a class="manual-link manual-link-child" href="./3-5-cloud-deploy.html">3-5 단계. 클라우드 서버에 배포하기</a>
+        </div>
+
+        <div class="manual-menu-group" aria-label="설치 가이드">
+          <p class="manual-chapter">설치 가이드</p>
+          <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Desktop과 CLI 이해하기</a>
+          <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
+          <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e3-cquery-mcp-install.html">GQuery MCP 서버 설치 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Section 1</p>
+          <h1>1단계 - 프로젝트의 목표 정하기</h1>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>예시 상황</h2>
+            <p>
+              특정 사이트를 운영하다 보면 운영 방침을 정리해야 할 때가 있다. 예를 들어 게시물 관리 기준,
+              사용자 문의 처리 방식, 관리자 확인 절차, 예외 상황 대응 방법을 팀원에게 공유해야 한다.
+            </p>
+            <p>
+              먼저 이 일이 고정된 안내 문서로 충분한지, 아니면 계속 바뀌는 데이터를 반영해야 하는지
+              나누어 생각하면 된다.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>어떤 결과물이 맞을까?</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>상황</th>
+                    <th>적합한 방식</th>
+                    <th>이유</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>운영 방침을 팀 내부에서 함께 검토하고 계속 수정해야 한다.</td>
+                    <td>Confluence 문서</td>
+                    <td>댓글, 수정 이력, 팀 공유가 쉬워 협업 문서에 적합하다.</td>
+                  </tr>
+                  <tr>
+                    <td>운영 방침을 보기 좋은 안내 페이지로 정리해 여러 사람이 읽게 하고 싶다.</td>
+                    <td>HTML 문서</td>
+                    <td>검색 필터, 그래프, 접기/펼치기처럼 화면에서 바로 확인하는 기능을 넣기 좋다.</td>
+                  </tr>
+                  <tr>
+                    <td>문의 건수, 처리 상태, 담당자, 예외 목록처럼 계속 바뀌는 데이터를 반영해야 한다.</td>
+                    <td>자동화 프로그램</td>
+                    <td>최신 데이터를 가져오고, 조건에 맞게 보여주거나, 상태 변경을 저장할 수 있어야 한다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>Confluence와 HTML 문서의 차이</h2>
+            <p>
+              두 방식 모두 문서지만 목적이 다르다. Confluence는 함께 작성하고 검토하는 데 강하고,
+              HTML 문서는 읽는 사람이 빠르게 찾고 비교하도록 화면을 구성하는 데 강하다.
+            </p>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>비교 항목</th>
+                    <th>Confluence 문서</th>
+                    <th>HTML 문서</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>주요 목적</th>
+                    <td>운영 방침을 팀 내부에서 함께 쓰고 검토한다.</td>
+                    <td>운영 방침을 보기 쉬운 안내 화면으로 제공한다.</td>
+                  </tr>
+                  <tr>
+                    <th>검색과 필터</th>
+                    <td>문서 전체 검색은 가능하지만, 항목별 필터 화면을 자유롭게 만들기는 어렵다.</td>
+                    <td>문의 유형, 처리 상태, 담당 부서 같은 조건으로 필터를 만들 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <th>그래프와 요약</th>
+                    <td>표나 간단한 차트는 넣을 수 있지만 표현 방식이 제한적이다.</td>
+                    <td>문의 유형 비율, 월별 처리 건수, 예외 처리 현황 같은 그래프를 화면에 배치할 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <th>화면 구성</th>
+                    <td>문서 목차와 본문 중심으로 정리된다.</td>
+                    <td>카드, 탭, 접기/펼치기, 강조 영역처럼 읽는 흐름을 직접 설계할 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <th>수정과 리뷰</th>
+                    <td>댓글, 멘션, 수정 이력이 좋아 팀 검토에 편하다.</td>
+                    <td>파일을 수정해 다시 배포해야 하므로 검토 과정은 Confluence보다 번거로울 수 있다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 이렇게 요청한다</h2>
+            <p>
+              처음 요청은 짧아도 괜찮다. 중요한 것은 만들고 싶은 결과와 사용할 사람을 함께 알려주는 것이다.
+            </p>
+            <pre class="code-block" aria-label="AI Agent 요청 예시"><code>특정 사이트의 운영 방침을 정리하려고 해.
+비개발자 운영 담당자가 읽을 수 있게 작성해줘.
+
+먼저 이 내용을 Confluence 문서, HTML 문서, 자동화 프로그램 중 어떤 방식으로 만들면 좋을지 비교해줘.
+운영 방침에는 게시물 관리 기준, 사용자 문의 처리, 관리자 확인 절차가 포함되어야 해.
+
+HTML 문서가 적합하다면 검색 필터, 접기/펼치기, 운영 현황 그래프를 넣을 수 있는지도 함께 제안해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>이 예시의 진행 방향</h2>
+            <ol>
+              <li>먼저 운영 방침에 들어갈 내용을 AI Agent와 함께 정리한다.</li>
+              <li>팀 검토가 먼저 필요하면 Confluence 초안으로 만든다.</li>
+              <li>공유용 안내 페이지가 필요하면 HTML 문서로 만든 뒤 OSS(Git)에 보관한다.</li>
+              <li>계속 바뀌는 운영 데이터를 반영해야 한다면 자동화 프로그램으로 확장한다.</li>
+              <li>자동화 프로그램은 OSS(Git)에 저장한 뒤 클라우드 서버에 올려 최신 데이터를 다루게 한다.</li>
+            </ol>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>클라우드 서버 앱 생성 (수정예정)</title>
+    <title>3-4 단계. OSS(Git)에 저장하기</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body>
@@ -11,7 +11,6 @@
       <nav class="manual-sidebar" aria-label="매뉴얼 메뉴">
         <a class="manual-brand" href="../index.html">네잎클로버 매뉴얼</a>
         <a class="manual-link" href="../index.html">대시보드</a>
-
         <div class="manual-menu-group" aria-label="AI로 개발하기">
           <p class="manual-chapter">AI로 개발하기</p>
           <a class="manual-link manual-link-child" href="./0-overview.html">개요</a>
@@ -23,7 +22,7 @@
           <a class="manual-link manual-link-child" href="./3-1-development-prep.html">3-1 단계. 개발 준비하기</a>
           <a class="manual-link manual-link-child" href="./3-2-screen-draft.html">3-2 단계. 화면 초안과 기능 구현하기</a>
           <a class="manual-link manual-link-child" href="./3-3-local-check.html">3-3 단계. 로컬에서 확인하고 수정하기</a>
-          <a class="manual-link manual-link-child" href="./3-4-git-save.html">3-4 단계. OSS(Git)에 저장하기</a>
+          <a class="manual-link manual-link-child is-active" href="./3-4-git-save.html" aria-current="page">3-4 단계. OSS(Git)에 저장하기</a>
           <a class="manual-link manual-link-child" href="./3-5-cloud-deploy.html">3-5 단계. 클라우드 서버에 배포하기</a>
         </div>
 
@@ -31,7 +30,7 @@
           <p class="manual-chapter">설치 가이드</p>
           <a class="manual-link manual-link-child" href="./e2-claude-code-basics.html">Claude Desktop과 CLI 이해하기</a>
           <a class="manual-link manual-link-child" href="./1-2-html-CloudServer-deploy.html">HTML로 클라우드 서버 배포하기</a>
-          <a class="manual-link manual-link-child is-active" href="./1-4-CloudServer-app-create.html" aria-current="page">클라우드 서버 앱 생성 (수정예정)</a>
+          <a class="manual-link manual-link-child" href="./1-4-CloudServer-app-create.html">클라우드 서버 앱 생성 (수정예정)</a>
           <a class="manual-link manual-link-child" href="./1-5-claude-md-role.html">CLAUDE.md 파일의 역할 (수정예정)</a>
           <a class="manual-link manual-link-child" href="../install-guide/e1-nodejs-install.html">Node.js 설치하기 (수정예정)</a>
           <a class="manual-link manual-link-child" href="../install-guide/e6-git-install-guide.html">Git 설치 가이드 (수정예정)</a>
@@ -39,54 +38,33 @@
           <a class="manual-link manual-link-child" href="../install-guide/e4-atlassian-mcp-install.html">Atlassian MCP 서버 설치 (수정예정)</a>
         </div>
       </nav>
-
       <main class="manual-content">
         <header class="page-header">
-          <p class="page-kicker">Section 1-4</p>
-          <h1>클라우드 서버 앱 생성 (수정예정)</h1>
+          <p class="page-kicker">Section 3-4</p>
+          <h1>3-4 단계. OSS(Git)에 저장하기</h1>
         </header>
-
         <article class="content-panel">
           <section class="content-section">
-            <h2>목적</h2>
+            <h2>이 단계의 목적</h2>
             <p>
-              클라우드 서버 앱은 Git에 올라간 HTML 결과물을 서버에서 실행하고 공유 URL로 제공하기 위한 배포 단위다.
-              쉽게 말해 “Git에 올린 결과물을 웹에서 볼 수 있게 연결하는 서비스”라고 이해하면 된다.
+              OSS(Git)에 저장하는 것은 완성된 파일을 안전한 저장소에 올리고 변경 이력을 남기는 단계다.
+              이후 배포나 수정 작업은 이 저장소를 기준으로 진행된다.
             </p>
           </section>
-
           <section class="content-section">
-            <h2>생성 전 준비물</h2>
+            <h2>저장 전 확인할 것</h2>
             <ul>
-              <li>HTML 결과물이 들어 있는 OSS(Git) 리포지토리</li>
-              <li>HTML을 서버로 제공하기 위한 server.js</li>
-              <li>클라우드 서버가 실행 방법을 알 수 있게 하는 Dockerfile</li>
-              <li>배포할 브랜치와 경로에 대한 확인</li>
+              <li>로컬에서 화면과 기능을 확인했는가?</li>
+              <li>불필요한 임시 파일이나 민감정보가 포함되지 않았는가?</li>
+              <li>어떤 내용을 변경했는지 설명할 수 있는가?</li>
             </ul>
           </section>
-
           <section class="content-section">
-            <h2>진행 순서</h2>
-            <ol>
-              <li>클라우드 서버에서 새 앱 또는 서비스를 생성한다.</li>
-              <li>OSS(Git) 리포지토리를 연결한다.</li>
-              <li>배포할 브랜치와 Dockerfile 위치를 확인한다.</li>
-              <li>환경 설정을 확인한 뒤 배포를 실행한다.</li>
-              <li>생성된 URL로 접속해 HTML 화면이 정상적으로 보이는지 확인한다.</li>
-            </ol>
-          </section>
+            <h2>AI Agent에게 요청하기</h2>
+            <pre class="code-block" aria-label="Git 저장 프롬프트 예시"><code>현재 프로그램 파일을 OSS(Git)에 저장할 준비를 해줘.
+변경된 파일을 확인하고, 민감정보가 포함되지 않았는지 점검해줘.
 
-          <section class="content-section">
-            <h2>확인할 점</h2>
-            <ul>
-              <li>클라우드 서버가 연결한 Git 리포지토리가 맞는지 확인한다.</li>
-              <li>최신 변경 내용이 push되어 있는지 확인한다.</li>
-              <li>배포 후 화면, 링크, 검색 필터 같은 주요 기능을 직접 확인한다.</li>
-            </ul>
-            <div class="note-box">
-              클라우드 서버 앱 생성은 보통 최초 1회 작업이다. 이후 HTML 문서를 수정할 때는 Git에 commit/push하고
-              다시 배포하는 흐름을 반복하면 된다.
-            </div>
+문제가 없으면 어떤 변경을 저장하는지 요약하고 commit/push까지 진행해줘.</code></pre>
           </section>
         </article>
       </main>

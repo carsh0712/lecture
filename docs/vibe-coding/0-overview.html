@@ -43,13 +43,13 @@ flowchart TD
   A["1. 프로젝트 정의<br/>문제, 사용자, 성공 기준"]
   B["2. 플랫폼 결정<br/>React, Node.js, Python, 노코드"]
   C["3. 데이터베이스 결정<br/>없음, 파일, SQLite, PostgreSQL"]
-  D["4. Git/GitHub 협업<br/>변경 기록과 공유"]
-  E["5. 호스팅/배포 비용<br/>어디에 올리고 얼마가 드는가"]
-  F["6. MVP 제작<br/>가장 작은 첫 버전"]
+  D["4. 호스팅/배포 비용 검토<br/>어디에 올리고 얼마가 드는가"]
+  E["5. MVP 제작<br/>가장 작은 첫 버전"]
+  F["6. Git/GitHub 협업<br/>변경 기록과 공유"]
   G["7. 검수와 반복<br/>화면 확인, 수정 요청, 재배포"]
 
   A --> B --> C --> D --> E --> F --> G
-  G -->|"수정 필요"| F
+  G -->|"수정 필요"| E
               </pre>
             </div>
           </section>
@@ -86,12 +86,6 @@ flowchart TD
                     <td>저장 방식 결정</td>
                   </tr>
                   <tr>
-                    <td>Git/GitHub 협업</td>
-                    <td>저장소 공개 여부와 변경 승인 기준</td>
-                    <td>변경 파일 정리, 커밋 메시지 제안</td>
-                    <td>안전한 변경 기록</td>
-                  </tr>
-                  <tr>
                     <td>호스팅/배포 비용</td>
                     <td>누가 접속하고 예산은 얼마인지</td>
                     <td>배포 후보와 비용 위험 비교</td>
@@ -102,6 +96,12 @@ flowchart TD
                     <td>첫 버전에 꼭 필요한 기능</td>
                     <td>작은 단위로 구현하고 수정</td>
                     <td>사용 가능한 첫 버전</td>
+                  </tr>
+                  <tr>
+                    <td>Git/GitHub 협업</td>
+                    <td>저장소 공개 여부와 변경 승인 기준</td>
+                    <td>변경 파일 정리, 커밋 메시지 제안</td>
+                    <td>공유 가능한 변경 기록</td>
                   </tr>
                 </tbody>
               </table>
@@ -114,8 +114,8 @@ flowchart TD
               <li><a class="source-list" href="./1-project-definition.html">프로젝트 정의</a>에서 문제와 범위를 먼저 정한다.</li>
               <li><a class="source-list" href="./2-platform-decision.html">플랫폼 결정</a>에서 어떤 방식으로 만들지 고른다.</li>
               <li><a class="source-list" href="./3-database-decision.html">데이터베이스 결정</a>에서 저장 방식이 필요한지 판단한다.</li>
-              <li><a class="source-list" href="./4-git-github-ai.html">Git/GitHub 협업</a>에서 AI 변경을 안전하게 기록하는 방법을 확인한다.</li>
               <li><a class="source-list" href="./5-cloud-hosting-cost.html">호스팅/배포 비용</a>에서 어디에 올릴지와 비용 위험을 비교한다.</li>
+              <li>MVP를 만든 뒤 <a class="source-list" href="./4-git-github-ai.html">Git/GitHub 협업</a>에서 AI 변경을 안전하게 기록하고 공유한다.</li>
             </ol>
           </section>
 
@@ -128,9 +128,10 @@ flowchart TD
 1. 프로젝트 정의: 문제, 사용자, 성공 기준, 제외 범위
 2. 플랫폼 결정: React, Node.js, Python, 노코드 중 후보 비교
 3. 데이터베이스 결정: DB 없음, 파일, SQLite, PostgreSQL 중 후보 비교
-4. Git/GitHub 협업: 저장소, 브랜치, 커밋, PR 기준
-5. 호스팅/배포 비용: 어디에 올릴지와 비용 위험
-6. MVP 범위: 가장 작은 첫 버전의 기능
+4. 호스팅/배포 비용: 어디에 올릴지와 비용 위험
+5. MVP 범위: 가장 작은 첫 버전의 기능
+6. Git/GitHub 협업: MVP 변경 내용을 저장소에 기록하고 공유하는 기준
+7. 검수와 반복: 화면 확인, 수정 요청, 재배포 흐름
 
 각 단계마다 사람이 결정할 것, AI가 도와줄 것, 결과물을 표로 정리해줘.</code></pre>
           </section>

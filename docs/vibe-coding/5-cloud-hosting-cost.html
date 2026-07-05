@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>클라우드 호스팅 비용 정리</title>
+    <link rel="stylesheet" href="../four-leaf-clover/assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="바이브코딩 매뉴얼 메뉴">
+        <a class="manual-brand" href="./index.html">바이브코딩 매뉴얼</a>
+        <a class="manual-link" href="../index.html">매뉴얼 포털</a>
+        <a class="manual-link" href="./index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI Agent 프로젝트 만들기">
+          <p class="manual-chapter">AI Agent 프로젝트 만들기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">0. 전체 흐름</a>
+          <a class="manual-link manual-link-child" href="./1-project-definition.html">1. 프로젝트 정의</a>
+          <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
+          <a class="manual-link manual-link-child" href="./3-database-decision.html">3. 데이터베이스 결정</a>
+          <a class="manual-link manual-link-child" href="./4-git-github-ai.html">4. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child is-active" href="./5-cloud-hosting-cost.html" aria-current="page">5. 호스팅/배포 비용</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Cost Planning</p>
+          <h1>5. 호스팅/배포 비용 정리</h1>
+          <p class="page-greeting">
+            이 문서는 바이브코딩으로 만든 프로젝트를 어디에 올릴지 결정할 때 비용을 대략 비교하기 위한 자료다.
+            가격은 2026년 7월 5일에 공식 가격 페이지를 확인한 기준이며, 실제 결제 전에는 각 서비스의 최신 가격과 환율, 세금, 사용량 조건을 다시 확인해야 한다.
+          </p>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>먼저 결정할 것</h2>
+            <p>
+              호스팅 비용은 "어느 회사가 싼가"보다 "내 프로젝트가 무엇을 필요로 하는가"에 따라 달라진다.
+              단순한 안내 페이지와 로그인, 데이터베이스, 파일 업로드가 있는 업무 도구는 필요한 비용 구조가 다르다.
+            </p>
+
+            <div class="mermaid-panel" aria-label="클라우드 호스팅 비용 판단 흐름">
+              <pre class="mermaid">
+flowchart TD
+  A["프로젝트 결과물 확인"]
+  B{"정적 페이지인가?<br/>HTML, 문서, 소개 페이지"}
+  C["GitHub Pages, Cloudflare Pages,<br/>Vercel, Netlify 무료 구간 검토"]
+  D{"서버 기능이 필요한가?<br/>로그인, API, 예약 작업"}
+  E["Vercel, Netlify Functions,<br/>Render, Railway 검토"]
+  F{"데이터베이스가 필요한가?"}
+  G["Supabase, Render Postgres,<br/>Railway DB, Lightsail DB 검토"]
+  H{"운영자가 서버를<br/>직접 관리할 수 있는가?"}
+  I["AWS Lightsail 같은<br/>고정 월 비용 서버 검토"]
+  J["관리형 플랫폼 사용<br/>비용은 높아도 운영 부담 감소"]
+
+  A --> B
+  B -->|"예"| C
+  B -->|"아니요"| D
+  D --> F
+  F -->|"예"| G
+  F -->|"아니요"| H
+  G --> H
+  H -->|"예"| I
+  H -->|"아니요"| J
+              </pre>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>비용 비교표</h2>
+            <p>
+              아래 금액은 대표적인 시작 비용을 이해하기 위한 요약이다. 대부분의 서비스는 무료 구간이 있어도 트래픽, 빌드 시간,
+              함수 실행, 데이터 저장량, 팀 기능, 도메인, 로그 보관 기간에 따라 비용이 달라질 수 있다.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>서비스</th>
+                    <th>어울리는 경우</th>
+                    <th>시작 비용 감각</th>
+                    <th>주의할 비용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>GitHub Pages</td>
+                    <td>정적 HTML 문서, 매뉴얼, 소개 페이지</td>
+                    <td>GitHub Free 플랜은 $0/월이고, GitHub Pages는 저장소 기반으로 사이트를 호스팅한다.</td>
+                    <td>서버 기능과 데이터베이스가 필요한 앱에는 맞지 않는다. 빌드 자동화 사용량은 GitHub Actions 조건을 확인한다.</td>
+                  </tr>
+                  <tr>
+                    <td>Cloudflare Pages</td>
+                    <td>정적 사이트, 빠른 전세계 배포, 간단한 프론트엔드</td>
+                    <td>공식 페이지에서 무료 시작을 제공한다. 신용카드 없이 시작 가능하다고 안내한다.</td>
+                    <td>Workers, D1, R2, KV 같은 추가 기능을 쓰면 별도 사용량 비용을 확인해야 한다.</td>
+                  </tr>
+                  <tr>
+                    <td>Vercel</td>
+                    <td>React, Next.js, 프론트엔드 중심 웹앱</td>
+                    <td>Hobby $0/월, Pro $20/월부터 시작한다.</td>
+                    <td>Pro에는 포함 사용량이 있지만, 요청 수, 데이터 전송량, 함수 실행, 이미지 최적화 등 초과 사용량 비용이 붙을 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <td>Netlify</td>
+                    <td>정적 사이트, 배포 미리보기, 간단한 서버리스 기능</td>
+                    <td>Free $0, Personal $9/월, Pro $20/월부터 시작한다.</td>
+                    <td>크레딧 방식으로 배포, 컴퓨트, 대역폭, 요청 수가 계산된다. 자동 충전 설정 여부를 확인한다.</td>
+                  </tr>
+                  <tr>
+                    <td>Render</td>
+                    <td>서버 API, 백그라운드 작업, PostgreSQL까지 한곳에서 관리</td>
+                    <td>정적 사이트는 $0/월부터 가능하다. 웹 서비스는 Free 또는 Starter $7/월부터, 유료 작업공간은 Pro $25/월 + compute 구조다.</td>
+                    <td>Postgres 무료는 30일 제한이 있으며, 운영 DB는 Basic $6/월 또는 그 이상을 검토한다. 대역폭 초과도 확인한다.</td>
+                  </tr>
+                  <tr>
+                    <td>Railway</td>
+                    <td>작은 풀스택 앱, DB 포함 빠른 실험</td>
+                    <td>Free는 30일 체험 크레딧 후 조건을 확인해야 하며, Hobby는 $5 최소 사용량부터 시작한다.</td>
+                    <td>사용량 기반 과금이라 앱을 켜 둔 시간, CPU, 메모리, 스토리지, 네트워크 사용량을 확인해야 한다.</td>
+                  </tr>
+                  <tr>
+                    <td>Supabase</td>
+                    <td>PostgreSQL DB, 로그인, 파일 저장소가 필요한 앱</td>
+                    <td>Free 플랜은 두 개의 무료 프로젝트를 제공한다. 유료 플랜은 고정 구독료와 사용량 비용이 함께 계산된다.</td>
+                    <td>DB 크기, egress, 인증 사용자 수, 스토리지, Edge Function 호출량이 늘어나면 초과 비용이 발생할 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <td>AWS Lightsail</td>
+                    <td>서버를 직접 운영할 수 있고 월 고정비를 선호하는 경우</td>
+                    <td>Linux/Unix public IPv4 번들은 $5/월부터, IPv6 전용 번들은 $3.50/월부터 시작한다.</td>
+                    <td>서버 보안, 업데이트, 백업을 직접 챙겨야 한다. DB, 로드밸런서, 스토리지, 초과 트래픽은 별도 비용이 된다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>상황별 추천</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>상황</th>
+                    <th>우선 검토</th>
+                    <th>이유</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>매뉴얼, 랜딩 페이지, 회사 내부 안내 페이지</td>
+                    <td>GitHub Pages, Cloudflare Pages</td>
+                    <td>서버와 DB가 없으면 무료 또는 낮은 비용으로 시작하기 쉽다.</td>
+                  </tr>
+                  <tr>
+                    <td>React나 Next.js로 만든 프론트엔드 앱</td>
+                    <td>Vercel, Netlify, Cloudflare Pages</td>
+                    <td>Git 연결과 자동 배포가 편하고, 미리보기 링크를 만들기 쉽다.</td>
+                  </tr>
+                  <tr>
+                    <td>API 서버가 필요한 작은 업무 도구</td>
+                    <td>Render, Railway</td>
+                    <td>Node.js, Python 같은 서버 앱을 비교적 간단히 올릴 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <td>로그인과 데이터 저장이 필요한 앱</td>
+                    <td>Supabase + Vercel 또는 Supabase + Netlify</td>
+                    <td>프론트엔드와 DB를 분리하면 비개발자도 비용 항목을 나누어 이해하기 쉽다.</td>
+                  </tr>
+                  <tr>
+                    <td>운영자가 서버 관리 경험이 있는 프로젝트</td>
+                    <td>AWS Lightsail</td>
+                    <td>월 고정비 예측은 쉽지만 서버 보안과 장애 대응 책임이 커진다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>숨은 비용 체크리스트</h2>
+            <ul>
+              <li>도메인 구입 비용이 별도로 필요한가?</li>
+              <li>서버 기능, 함수 실행, 예약 작업이 무료 구간을 넘을 가능성이 있는가?</li>
+              <li>데이터베이스 저장 용량과 백업 비용이 포함되어 있는가?</li>
+              <li>파일 업로드, 이미지 저장, 다운로드 트래픽이 많은가?</li>
+              <li>팀원이 늘어나면 사용자당 요금이 붙는가?</li>
+              <li>무료 DB가 일정 기간 후 삭제되거나 일시 정지되는 조건이 있는가?</li>
+              <li>예산 알림, 지출 제한, 자동 충전 끄기 같은 보호 장치가 있는가?</li>
+            </ul>
+            <div class="note-box">
+              처음에는 "무료로 시작 가능한가"보다 "유료로 넘어갈 때 어떤 항목에서 비용이 늘어나는가"를 확인하는 것이 중요하다.
+              특히 DB, 파일 저장소, 트래픽, 팀 기능은 예상보다 빨리 비용 항목이 될 수 있다.
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 물어볼 예시</h2>
+            <pre class="code-block" aria-label="클라우드 호스팅 비용 비교 프롬프트 예시"><code>우리가 만들 프로젝트의 클라우드 호스팅 비용을 비교해줘.
+
+프로젝트 조건:
+- 사용자는 사내 직원 5명이다.
+- React 화면과 간단한 Node.js API가 필요하다.
+- 로그인은 필요하지만 외부 고객에게 공개하지 않는다.
+- 하루 데이터 입력은 100건 이하이고, 파일 업로드는 거의 없다.
+- 월 비용은 가능하면 3만 원 이하로 시작하고 싶다.
+
+비교해줄 항목:
+- GitHub Pages, Vercel, Netlify, Render, Railway, Supabase, AWS Lightsail 중 어떤 조합이 맞는지
+- 무료로 시작할 수 있는지
+- 유료로 넘어가는 조건
+- 숨은 비용 위험
+- 비개발자가 운영하기 쉬운 추천안</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>출처</h2>
+            <ul class="source-list">
+              <li><a href="https://github.com/pricing">GitHub Pricing</a>, <a href="https://pages.github.com/">GitHub Pages</a></li>
+              <li><a href="https://www.cloudflare.com/products/pages/">Cloudflare Pages</a></li>
+              <li><a href="https://vercel.com/pricing">Vercel Pricing</a></li>
+              <li><a href="https://www.netlify.com/pricing/">Netlify Pricing</a></li>
+              <li><a href="https://render.com/pricing">Render Pricing</a></li>
+              <li><a href="https://railway.com/pricing">Railway Pricing</a></li>
+              <li><a href="https://supabase.com/docs/guides/platform/billing-on-supabase">Supabase Billing</a></li>
+              <li><a href="https://aws.amazon.com/lightsail/pricing/">AWS Lightsail Pricing</a></li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

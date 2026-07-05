@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>데이터베이스 결정하기</title>
+    <link rel="stylesheet" href="../four-leaf-clover/assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="바이브코딩 매뉴얼 메뉴">
+        <a class="manual-brand" href="./index.html">바이브코딩 매뉴얼</a>
+        <a class="manual-link" href="../index.html">매뉴얼 포털</a>
+        <a class="manual-link" href="./index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI Agent 프로젝트 만들기">
+          <p class="manual-chapter">AI Agent 프로젝트 만들기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">0. 전체 흐름</a>
+          <a class="manual-link manual-link-child" href="./1-project-definition.html">1. 프로젝트 정의</a>
+          <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
+          <a class="manual-link manual-link-child is-active" href="./3-database-decision.html" aria-current="page">3. 데이터베이스 결정</a>
+          <a class="manual-link manual-link-child" href="./4-git-github-ai.html">4. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child" href="./5-cloud-hosting-cost.html">5. 호스팅/배포 비용</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Database Decision</p>
+          <h1>3. 데이터베이스 결정하기</h1>
+          <p class="page-greeting">
+            데이터베이스는 프로젝트가 사용하는 데이터를 저장하고 다시 꺼내 쓰는 공간이다.
+            모든 프로젝트에 데이터베이스가 필요한 것은 아니므로, 먼저 저장할 데이터가 있는지부터 판단한다.
+          </p>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>간단한 판단 흐름</h2>
+            <div class="mermaid-panel" aria-label="데이터베이스 결정 흐름도">
+              <pre class="mermaid">
+flowchart TD
+  A["프로젝트에 저장할 데이터가 있는가?"]
+  B["DB 없음<br/>정적 페이지, 안내 문서"]
+  C{"데이터를 사람이<br/>직접 파일로 관리해도 되는가?"}
+  D["파일 저장<br/>CSV, JSON, 엑셀"]
+  E{"사용자가 앱에서<br/>데이터를 추가/수정하는가?"}
+  F["SQLite<br/>작은 앱, 혼자 또는 소수 사용"]
+  G{"여러 사람이 동시에<br/>사용하거나 운영할 앱인가?"}
+  H["PostgreSQL<br/>운영용 웹앱, 팀 사용"]
+  I["관리형 DB 검토<br/>Supabase, Render, Railway 등"]
+
+  A -->|"없음"| B
+  A -->|"있음"| C
+  C -->|"예"| D
+  C -->|"아니요"| E
+  E -->|"아니요"| D
+  E -->|"예"| G
+  G -->|"아니요"| F
+  G -->|"예"| H --> I
+              </pre>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>주요 선택지</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>선택지</th>
+                    <th>쉽게 말하면</th>
+                    <th>어울리는 경우</th>
+                    <th>주의할 점</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>DB 없음</td>
+                    <td>저장할 데이터 없이 화면이나 문서만 제공한다.</td>
+                    <td>매뉴얼, 소개 페이지, 고정된 안내 자료</td>
+                    <td>사용자가 입력한 내용을 저장하거나 조회할 수 없다.</td>
+                  </tr>
+                  <tr>
+                    <td>파일</td>
+                    <td>CSV, JSON, 엑셀 같은 파일에 데이터를 보관한다.</td>
+                    <td>작은 목록, 설정값, 사람이 직접 관리해도 되는 데이터</td>
+                    <td>여러 사람이 동시에 수정하면 충돌이 생기기 쉽다.</td>
+                  </tr>
+                  <tr>
+                    <td>SQLite</td>
+                    <td>하나의 파일처럼 관리되는 가벼운 데이터베이스다.</td>
+                    <td>개인용 도구, 작은 내부 앱, 초기 MVP</td>
+                    <td>동시 사용자가 많거나 서버 여러 대에서 운영하는 앱에는 조심해야 한다.</td>
+                  </tr>
+                  <tr>
+                    <td>PostgreSQL</td>
+                    <td>운영용 웹앱에서 많이 쓰는 안정적인 데이터베이스다.</td>
+                    <td>여러 사용자가 데이터를 입력, 수정, 검색하는 업무 도구</td>
+                    <td>백업, 권한, 접속 정보, 비용 관리가 필요하다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>처음에는 이렇게 고른다</h2>
+            <ul>
+              <li>안내 페이지나 문서라면 DB 없음으로 시작한다.</li>
+              <li>데이터가 작고 사람이 파일로 관리할 수 있으면 CSV나 JSON 파일을 검토한다.</li>
+              <li>작은 앱에서 데이터를 저장해야 하지만 사용자가 많지 않다면 SQLite를 검토한다.</li>
+              <li>여러 사람이 동시에 쓰거나 운영 데이터가 중요하면 PostgreSQL을 검토한다.</li>
+              <li>로그인, 권한, 파일 저장까지 필요하면 Supabase 같은 관리형 서비스를 함께 검토한다.</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>비개발자가 확인할 질문</h2>
+            <ul>
+              <li>사용자가 입력한 내용을 나중에 다시 봐야 하는가?</li>
+              <li>데이터를 검색하거나 필터링해야 하는가?</li>
+              <li>여러 사람이 동시에 수정할 가능성이 있는가?</li>
+              <li>삭제되면 안 되는 중요한 데이터인가?</li>
+              <li>백업이 필요한가?</li>
+              <li>개인정보나 회사 내부 정보가 들어가는가?</li>
+            </ul>
+            <div class="note-box">
+              데이터가 중요할수록 "일단 파일로 저장하자"는 선택이 위험해질 수 있다.
+              운영에 쓰는 데이터라면 처음부터 백업과 권한을 함께 생각해야 한다.
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 말하는 예시</h2>
+            <pre class="code-block" aria-label="데이터베이스 결정 프롬프트 예시"><code>우리 프로젝트에 데이터베이스가 필요한지 판단해줘.
+
+상황:
+- 사용자가 문의 목록을 등록하고 상태를 수정한다.
+- 사내 직원 5명이 함께 사용한다.
+- 데이터는 나중에 검색해야 한다.
+- 삭제되면 곤란하므로 백업이 필요하다.
+
+비교해줄 항목:
+- DB 없음, 파일, SQLite, PostgreSQL 중 어떤 선택이 맞는지
+- 처음 MVP에서 추천하는 저장 방식
+- 나중에 운영용으로 바꿔야 할 가능성
+- 개인정보나 권한 관리에서 주의할 점
+- 비개발자가 확인해야 할 데이터 항목</code></pre>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>프로젝트 정의하기</title>
+    <link rel="stylesheet" href="../four-leaf-clover/assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="바이브코딩 매뉴얼 메뉴">
+        <a class="manual-brand" href="./index.html">바이브코딩 매뉴얼</a>
+        <a class="manual-link" href="../index.html">매뉴얼 포털</a>
+        <a class="manual-link" href="./index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI Agent 프로젝트 만들기">
+          <p class="manual-chapter">AI Agent 프로젝트 만들기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">0. 전체 흐름</a>
+          <a class="manual-link manual-link-child is-active" href="./1-project-definition.html" aria-current="page">1. 프로젝트 정의</a>
+          <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
+          <a class="manual-link manual-link-child" href="./3-database-decision.html">3. 데이터베이스 결정</a>
+          <a class="manual-link manual-link-child" href="./4-git-github-ai.html">4. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child" href="./5-cloud-hosting-cost.html">5. 호스팅/배포 비용</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Project Definition</p>
+          <h1>1. 프로젝트 정의하기</h1>
+          <p class="page-greeting">
+            AI Agent에게 바로 만들라고 요청하기 전에, 먼저 어떤 문제를 해결할지 정리해야 한다.
+            이 단계가 분명해야 플랫폼, 데이터베이스, Git, 배포 결정도 흔들리지 않는다.
+          </p>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>먼저 정해야 할 것</h2>
+            <div class="mermaid-panel" aria-label="프로젝트 정의 흐름도">
+              <pre class="mermaid">
+flowchart TD
+  A["업무 문제<br/>무엇이 불편한가?"]
+  B["사용자<br/>누가 사용할까?"]
+  C["현재 방식<br/>지금은 어떻게 처리하나?"]
+  D["목표 결과<br/>무엇이 쉬워져야 하나?"]
+  E["성공 기준<br/>완료를 어떻게 판단하나?"]
+  F["제외 범위<br/>이번에는 하지 않을 것"]
+  G["AI Agent에게 전달할<br/>프로젝트 브리프"]
+
+  A --> B --> C --> D --> E --> F --> G
+              </pre>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>프로젝트 브리프 항목</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>항목</th>
+                    <th>질문</th>
+                    <th>예시</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>문제</td>
+                    <td>무엇이 불편하거나 시간이 많이 드는가?</td>
+                    <td>문의 처리 상태를 엑셀로 관리해서 누락이 생긴다.</td>
+                  </tr>
+                  <tr>
+                    <td>사용자</td>
+                    <td>누가 이 도구를 사용할 것인가?</td>
+                    <td>사내 운영 담당자 5명</td>
+                  </tr>
+                  <tr>
+                    <td>입력 데이터</td>
+                    <td>사용자가 무엇을 입력하는가?</td>
+                    <td>문의 제목, 고객명, 담당자, 처리 상태</td>
+                  </tr>
+                  <tr>
+                    <td>출력 결과</td>
+                    <td>사용자가 무엇을 확인해야 하는가?</td>
+                    <td>상태별 문의 목록과 처리 지연 건수</td>
+                  </tr>
+                  <tr>
+                    <td>성공 기준</td>
+                    <td>첫 버전이 쓸 만하다고 판단하는 기준은 무엇인가?</td>
+                    <td>운영자가 문의를 등록하고 상태를 변경할 수 있다.</td>
+                  </tr>
+                  <tr>
+                    <td>제외 범위</td>
+                    <td>이번 버전에서 하지 않을 것은 무엇인가?</td>
+                    <td>고객용 로그인, 알림톡 발송, 복잡한 통계</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 말하는 예시</h2>
+            <pre class="code-block" aria-label="프로젝트 정의 프롬프트 예시"><code>바로 코드를 만들지 말고, 먼저 프로젝트 정의를 정리해줘.
+
+상황:
+- 우리는 사내 문의 처리 상태를 더 쉽게 관리하고 싶다.
+- 현재는 엑셀로 관리해서 누락과 중복이 생긴다.
+- 사용자는 운영 담당자 5명이다.
+- 첫 버전에서는 문의 등록, 목록 조회, 상태 변경만 있으면 된다.
+- 고객 로그인, 외부 공개, 알림 발송은 이번 범위에서 제외한다.
+
+정리해줄 내용:
+- 프로젝트 목적
+- 사용자
+- 입력 데이터와 출력 결과
+- MVP 기능 범위
+- 이번 버전에서 제외할 것
+- 다음 단계에서 결정해야 할 플랫폼과 DB 질문</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>완료 기준</h2>
+            <ul>
+              <li>프로젝트 목적을 한 문장으로 설명할 수 있다.</li>
+              <li>사용자가 누구인지 분명하다.</li>
+              <li>첫 버전에 꼭 필요한 기능과 나중에 할 기능이 구분되어 있다.</li>
+              <li>AI Agent에게 전달할 브리프가 준비되어 있다.</li>
+            </ul>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

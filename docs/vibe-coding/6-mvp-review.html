@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MVP 제작과 검수</title>
+    <link rel="stylesheet" href="../four-leaf-clover/assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="바이브코딩 매뉴얼 메뉴">
+        <a class="manual-brand" href="./index.html">바이브코딩 매뉴얼</a>
+        <a class="manual-link" href="../index.html">매뉴얼 포털</a>
+        <a class="manual-link" href="./index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI Agent 프로젝트 만들기">
+          <p class="manual-chapter">AI Agent 프로젝트 만들기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">0. 전체 흐름</a>
+          <a class="manual-link manual-link-child" href="./1-project-definition.html">1. 프로젝트 정의</a>
+          <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
+          <a class="manual-link manual-link-child" href="./3-database-decision.html">3. 데이터베이스 결정</a>
+          <a class="manual-link manual-link-child" href="./4-cloud-hosting-cost.html">4. 호스팅/배포 비용</a>
+          <a class="manual-link manual-link-child" href="./5-ai-agent-request.html">5. AI Agent 요청법</a>
+          <a class="manual-link manual-link-child is-active" href="./6-mvp-review.html" aria-current="page">6. MVP 제작과 검수</a>
+          <a class="manual-link manual-link-child" href="./7-git-github-ai.html">7. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child" href="./8-prompt-templates.html">8. 프롬프트 템플릿</a>
+          <a class="manual-link manual-link-child" href="./9-useful-tools.html">9. 도움이 되는 도구</a>
+          <a class="manual-link manual-link-child" href="./10-glossary.html">10. 용어 정리</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">MVP Review</p>
+          <h1>6. MVP 제작과 검수</h1>
+          <p class="page-greeting">
+            MVP는 Minimum Viable Product의 약자로, 최소로 실행 가능한 제품이라는 뜻이다. 쉽게 말하면 가장 작은 첫 버전이다.
+            모든 기능을 넣는 것이 아니라, 실제 업무에서 쓸 수 있는 최소 흐름을 먼저 만들고 확인한다.
+          </p>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>MVP 제작 흐름</h2>
+            <div class="mermaid-panel" aria-label="MVP 제작과 검수 흐름">
+              <pre class="mermaid">
+flowchart TD
+  A["핵심 업무 흐름 선택"]
+  B["첫 화면과 기능 범위 결정"]
+  C["AI Agent가 작은 단위로 구현"]
+  D["로컬 또는 미리보기 화면 확인"]
+  E{"업무 기준에 맞는가?"}
+  F["수정 요청"]
+  G["Git/GitHub에 기록"]
+  H["배포 또는 공유"]
+
+  A --> B --> C --> D --> E
+  E -->|"아니요"| F --> C
+  E -->|"예"| G --> H
+              </pre>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>MVP에 넣을 것과 미룰 것</h2>
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>구분</th>
+                    <th>포함할 것</th>
+                    <th>나중에 할 것</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>문의 관리 도구</td>
+                    <td>등록, 목록, 상태 변경</td>
+                    <td>알림, 통계, 고객용 화면</td>
+                  </tr>
+                  <tr>
+                    <td>매뉴얼 사이트</td>
+                    <td>대시보드, 메뉴, 핵심 문서</td>
+                    <td>검색, 권한, 댓글</td>
+                  </tr>
+                  <tr>
+                    <td>파일 정리 자동화</td>
+                    <td>파일 읽기, 변환, 결과 저장</td>
+                    <td>예약 실행, 관리자 화면, 상세 로그</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="content-section">
+            <h2>검수 체크리스트</h2>
+            <ul>
+              <li>처음 사용자가 무엇을 눌러야 하는지 보이는가?</li>
+              <li>핵심 기능이 실제 업무 순서와 맞는가?</li>
+              <li>잘못 입력했을 때 되돌리거나 수정할 수 있는가?</li>
+              <li>모바일이나 작은 화면에서 버튼과 글자가 겹치지 않는가?</li>
+              <li>저장된 데이터가 다시 조회되는가?</li>
+              <li>예상하지 않은 파일이나 설정이 바뀌지 않았는가?</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>AI Agent에게 말하는 예시</h2>
+            <pre class="code-block" aria-label="MVP 검수 프롬프트 예시"><code>첫 MVP를 만들기 전에 범위를 다시 줄여줘.
+
+목표:
+- 운영 담당자가 문의를 등록하고 처리 상태를 바꾸는 첫 버전
+
+포함할 것:
+- 문의 등록 화면
+- 문의 목록 화면
+- 상태 변경 기능
+
+제외할 것:
+- 로그인
+- 알림
+- 통계
+
+구현 후에는 내가 확인할 체크리스트도 함께 작성해줘.</code></pre>
+          </section>
+        </article>
+      </main>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#eff6ff",
+          primaryTextColor: "#172033",
+          primaryBorderColor: "#93c5fd",
+          lineColor: "#475569",
+          secondaryColor: "#f8fafc",
+          tertiaryColor: "#ffffff"
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -19,8 +19,13 @@
           <a class="manual-link manual-link-child" href="./1-project-definition.html">1. 프로젝트 정의</a>
           <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
           <a class="manual-link manual-link-child" href="./3-database-decision.html">3. 데이터베이스 결정</a>
-          <a class="manual-link manual-link-child" href="./4-git-github-ai.html">4. Git/GitHub 협업</a>
-          <a class="manual-link manual-link-child" href="./5-cloud-hosting-cost.html">5. 호스팅/배포 비용</a>
+          <a class="manual-link manual-link-child" href="./4-cloud-hosting-cost.html">4. 호스팅/배포 비용</a>
+          <a class="manual-link manual-link-child" href="./5-ai-agent-request.html">5. AI Agent 요청법</a>
+          <a class="manual-link manual-link-child" href="./6-mvp-review.html">6. MVP 제작과 검수</a>
+          <a class="manual-link manual-link-child" href="./7-git-github-ai.html">7. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child" href="./8-prompt-templates.html">8. 프롬프트 템플릿</a>
+          <a class="manual-link manual-link-child" href="./9-useful-tools.html">9. 도움이 되는 도구</a>
+          <a class="manual-link manual-link-child" href="./10-glossary.html">10. 용어 정리</a>
         </div>
       </nav>
 
@@ -44,12 +49,15 @@ flowchart TD
   B["2. 플랫폼 결정<br/>React, Node.js, Python, 정적 HTML"]
   C["3. 데이터베이스 결정<br/>없음, 파일, SQLite, PostgreSQL"]
   D["4. 호스팅/배포 비용 검토<br/>어디에 올리고 얼마가 드는가"]
-  E["5. MVP 제작<br/>가장 작은 첫 버전"]
-  F["6. Git/GitHub 협업<br/>변경 기록과 공유"]
-  G["7. 검수와 반복<br/>화면 확인, 수정 요청, 재배포"]
+  E["5. AI Agent 요청법<br/>작게 맡기고 확인하기"]
+  F["6. MVP 제작과 검수<br/>가장 작은 첫 버전"]
+  G["7. Git/GitHub 협업<br/>변경 기록과 공유"]
+  H["8. 프롬프트 템플릿<br/>반복 작업 문장 모음"]
+  I["9. 도움이 되는 도구<br/>단계별 도구 선택"]
+  J["10. 용어 정리<br/>낯선 단어를 쉬운 말로 확인"]
 
-  A --> B --> C --> D --> E --> F --> G
-  G -->|"수정 필요"| E
+  A --> B --> C --> D --> E --> F --> G --> H --> I --> J
+  F -->|"수정 필요"| E
               </pre>
             </div>
           </section>
@@ -92,6 +100,12 @@ flowchart TD
                     <td>배포 대상 후보</td>
                   </tr>
                   <tr>
+                    <td>AI Agent 요청법</td>
+                    <td>무엇을 맡기고 무엇을 확인할지</td>
+                    <td>작업 계획, 구현, 수정 요청을 작게 나누기</td>
+                    <td>명확한 요청 문장</td>
+                  </tr>
+                  <tr>
                     <td>MVP 제작</td>
                     <td>첫 버전에 꼭 필요한 기능</td>
                     <td>작은 단위로 구현하고 수정</td>
@@ -102,6 +116,24 @@ flowchart TD
                     <td>저장소 공개 여부와 변경 승인 기준</td>
                     <td>변경 파일 정리, 커밋 메시지 제안</td>
                     <td>공유 가능한 변경 기록</td>
+                  </tr>
+                  <tr>
+                    <td>프롬프트 템플릿</td>
+                    <td>반복해서 쓸 요청 문장</td>
+                    <td>상황별 요청 예시 정리</td>
+                    <td>재사용 가능한 프롬프트</td>
+                  </tr>
+                  <tr>
+                    <td>도움이 되는 도구</td>
+                    <td>단계별로 어떤 도구가 필요한지</td>
+                    <td>기획, 구현, 검수, 배포 도구 구분</td>
+                    <td>프로젝트 도구 목록</td>
+                  </tr>
+                  <tr>
+                    <td>용어 정리</td>
+                    <td>낯선 개발 용어의 뜻</td>
+                    <td>프로젝트 흐름에 맞춰 쉬운 말로 풀이</td>
+                    <td>비개발자용 용어 사전</td>
                   </tr>
                 </tbody>
               </table>
@@ -114,8 +146,13 @@ flowchart TD
               <li><a class="source-list" href="./1-project-definition.html">프로젝트 정의</a>에서 문제와 범위를 먼저 정한다.</li>
               <li><a class="source-list" href="./2-platform-decision.html">플랫폼 결정</a>에서 어떤 방식으로 만들지 고른다.</li>
               <li><a class="source-list" href="./3-database-decision.html">데이터베이스 결정</a>에서 저장 방식이 필요한지 판단한다.</li>
-              <li><a class="source-list" href="./5-cloud-hosting-cost.html">호스팅/배포 비용</a>에서 어디에 올릴지와 비용 위험을 비교한다.</li>
-              <li>MVP를 만든 뒤 <a class="source-list" href="./4-git-github-ai.html">Git/GitHub 협업</a>에서 AI 변경을 안전하게 기록하고 공유한다.</li>
+              <li><a class="source-list" href="./4-cloud-hosting-cost.html">호스팅/배포 비용</a>에서 어디에 올릴지와 비용 위험을 비교한다.</li>
+              <li><a class="source-list" href="./5-ai-agent-request.html">AI Agent 요청법</a>에서 일을 작게 나누어 맡기는 방식을 익힌다.</li>
+              <li><a class="source-list" href="./6-mvp-review.html">MVP 제작과 검수</a>에서 첫 버전을 만들고 확인한다.</li>
+              <li><a class="source-list" href="./7-git-github-ai.html">Git/GitHub 협업</a>에서 AI 변경을 안전하게 기록하고 공유한다.</li>
+              <li><a class="source-list" href="./8-prompt-templates.html">프롬프트 템플릿</a>을 반복 작업에 활용한다.</li>
+              <li><a class="source-list" href="./9-useful-tools.html">도움이 되는 도구</a>에서 단계별 도구를 확인한다.</li>
+              <li><a class="source-list" href="./10-glossary.html">용어 정리</a>에서 낯선 단어를 확인한다.</li>
             </ol>
           </section>
 
@@ -129,9 +166,12 @@ flowchart TD
 2. 플랫폼 결정: React, Node.js, Python, 정적 HTML 중 후보 비교
 3. 데이터베이스 결정: DB 없음, 파일, SQLite, PostgreSQL 중 후보 비교
 4. 호스팅/배포 비용: 어디에 올릴지와 비용 위험
-5. MVP 범위: 가장 작은 첫 버전의 기능
-6. Git/GitHub 협업: MVP 변경 내용을 저장소에 기록하고 공유하는 기준
-7. 검수와 반복: 화면 확인, 수정 요청, 재배포 흐름
+5. AI Agent 요청법: 일을 작게 나누어 맡기는 방식
+6. MVP 제작과 검수: 가장 작은 첫 버전의 기능과 확인 기준
+7. Git/GitHub 협업: MVP 변경 내용을 저장소에 기록하고 공유하는 기준
+8. 프롬프트 템플릿: 반복해서 쓸 요청 문장
+9. 도움이 되는 도구: 기획, 구현, 검수, 배포, 데이터 확인 도구
+10. 용어 정리: 비개발자가 알아야 할 개발 용어 풀이
 
 각 단계마다 사람이 결정할 것, AI가 도와줄 것, 결과물을 표로 정리해줘.</code></pre>
           </section>

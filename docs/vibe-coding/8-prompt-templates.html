@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>프롬프트 템플릿 모음</title>
+    <link rel="stylesheet" href="../four-leaf-clover/assets/css/styles.css">
+  </head>
+  <body>
+    <div class="manual-layout">
+      <nav class="manual-sidebar" aria-label="바이브코딩 매뉴얼 메뉴">
+        <a class="manual-brand" href="./index.html">바이브코딩 매뉴얼</a>
+        <a class="manual-link" href="../index.html">매뉴얼 포털</a>
+        <a class="manual-link" href="./index.html">대시보드</a>
+
+        <div class="manual-menu-group" aria-label="AI Agent 프로젝트 만들기">
+          <p class="manual-chapter">AI Agent 프로젝트 만들기</p>
+          <a class="manual-link manual-link-child" href="./0-overview.html">0. 전체 흐름</a>
+          <a class="manual-link manual-link-child" href="./1-project-definition.html">1. 프로젝트 정의</a>
+          <a class="manual-link manual-link-child" href="./2-platform-decision.html">2. 플랫폼 결정</a>
+          <a class="manual-link manual-link-child" href="./3-database-decision.html">3. 데이터베이스 결정</a>
+          <a class="manual-link manual-link-child" href="./4-cloud-hosting-cost.html">4. 호스팅/배포 비용</a>
+          <a class="manual-link manual-link-child" href="./5-ai-agent-request.html">5. AI Agent 요청법</a>
+          <a class="manual-link manual-link-child" href="./6-mvp-review.html">6. MVP 제작과 검수</a>
+          <a class="manual-link manual-link-child" href="./7-git-github-ai.html">7. Git/GitHub 협업</a>
+          <a class="manual-link manual-link-child is-active" href="./8-prompt-templates.html" aria-current="page">8. 프롬프트 템플릿</a>
+          <a class="manual-link manual-link-child" href="./9-useful-tools.html">9. 도움이 되는 도구</a>
+          <a class="manual-link manual-link-child" href="./10-glossary.html">10. 용어 정리</a>
+        </div>
+      </nav>
+
+      <main class="manual-content">
+        <header class="page-header">
+          <p class="page-kicker">Prompt Templates</p>
+          <h1>8. 프롬프트 템플릿 모음</h1>
+          <p class="page-greeting">
+            아래 템플릿은 비개발자가 AI Agent에게 바로 붙여 넣어 사용할 수 있는 요청 예시다.
+            대괄호 안의 내용만 프로젝트 상황에 맞게 바꾸면 된다.
+          </p>
+        </header>
+
+        <article class="content-panel">
+          <section class="content-section">
+            <h2>프로젝트 정의 요청</h2>
+            <pre class="code-block"><code>바로 코딩하지 말고 프로젝트 정의부터 정리해줘.
+
+상황:
+- 필요한 것: [무엇이 필요한가]
+- 사용자: [누가 사용할까]
+- 현재 방식: [지금은 어떻게 처리하나]
+- 목표 결과: [무엇이 쉬워져야 하나]
+
+정리해줄 내용:
+- 프로젝트 목적
+- 사용자
+- MVP 범위
+- 제외할 것
+- 다음에 결정해야 할 질문</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>플랫폼 비교 요청</h2>
+            <pre class="code-block"><code>우리 프로젝트에 맞는 플랫폼을 비교해줘.
+
+조건:
+- 화면 필요 여부: [예/아니요]
+- 서버 기능 필요 여부: [예/아니요]
+- 데이터 처리/자동화 필요 여부: [예/아니요]
+- 사용자 수: [예상 사용자 수]
+
+React, Node.js, Python, 정적 HTML 중 어떤 선택이 맞는지 비교하고 추천해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>데이터베이스 비교 요청</h2>
+            <pre class="code-block"><code>이 프로젝트에 데이터베이스가 필요한지 판단해줘.
+
+저장할 데이터:
+- [데이터 항목 1]
+- [데이터 항목 2]
+- [데이터 항목 3]
+
+사용 방식:
+- 여러 사람이 동시에 쓰는가: [예/아니요]
+- 검색이 필요한가: [예/아니요]
+- 백업이 필요한가: [예/아니요]
+
+DB 없음, 파일, SQLite, PostgreSQL 중 추천해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>MVP 구현 요청</h2>
+            <pre class="code-block"><code>첫 MVP만 작게 만들어줘.
+
+포함할 기능:
+- [기능 1]
+- [기능 2]
+- [기능 3]
+
+제외할 기능:
+- [나중에 할 기능 1]
+- [나중에 할 기능 2]
+
+작업 후에는 내가 확인할 검수 체크리스트도 작성해줘.</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>수정 요청</h2>
+            <pre class="code-block"><code>아래 부분만 수정해줘.
+
+수정할 위치:
+- [화면/기능/문서 위치]
+
+현재 문제:
+- [무엇이 기대와 다른가]
+
+원하는 결과:
+- [어떻게 바뀌어야 하는가]
+
+수정 후 확인할 것:
+- [확인 기준]</code></pre>
+          </section>
+
+          <section class="content-section">
+            <h2>Git 커밋 전 확인 요청</h2>
+            <pre class="code-block"><code>커밋하기 전에 변경 내용을 비개발자가 이해할 수 있게 정리해줘.
+
+확인할 것:
+- 어떤 파일이 바뀌었는지
+- 왜 바뀌었는지
+- 의도하지 않은 변경이 있는지
+- 민감한 정보가 포함되었는지
+- 추천 커밋 메시지</code></pre>
+          </section>
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
